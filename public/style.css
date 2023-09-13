@@ -1,0 +1,111 @@
+body{
+    background-image: url("/images/background.jpeg");
+    backdrop-filter: blur(100px);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 1500px; /* Add enough content to make scrolling necessary */
+    width: 50%;
+    margin: 15px auto; 
+}        
+        
+        /* Style for the dropdown container */
+        .dropdown {
+            /*position: relative;*/
+            display: inline-block;
+        }
+
+        /* Style for the input element */
+        input {
+            background-color: rgb(215, 212, 212);
+            color: black;
+            padding: 10px;
+            margin: 15px;
+            border: 1px black solid;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 200px; /* Adjust the width as needed */
+            align-items: center;
+            justify-items: center;
+        }
+        .result {
+            padding: 40px;
+        }
+
+        /* Style for the dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Style for dropdown content items */
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
+
+        /* Change color of dropdown content items on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown content when the input is focused */
+        .dropdown-input:focus + .dropdown-content {
+            display: block;
+        }
+   /* Style for the fixed navigation bar at the bottom */
+   .navbar {
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    background-color: white;
+    color: blue;
+    padding: 10px 0;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+/* Style for the page content */
+.content {
+     margin-top: 20px; /*Ensure content appears below the top navbar */
+    margin-bottom: 60px; /* Ensure content appears above the bottom navbar */
+    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.096); /* Semi-transparent background to make the text readable */
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for better contrast */
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 50%;
+    background-color: white;
+    color: blue;
+    padding: 10px 0;
+    text-align: left;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.navbar-content {
+    text-align: left;
+}
+.navbar-contents {
+    text-align: right;
+}
+button {
+    background-color: navy;
+    color: #f1f1f1;
+    text-align: left;
+    border-radius: 10px;
+}

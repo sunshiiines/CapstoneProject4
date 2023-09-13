@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div>
+        <header>
+                <div class="navbar-content">
+                <a href="index.html"><i class="fa fa-home fa-2x"></i></a>
+                </div>
+                <div class="navbar-contents">
+                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bell fa-2x"></i></a>
+                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-2x"></i></a>
+                </div>
+        </header>
+
+        <section class="content">
+            <h1>Hello User,</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+
+            <input type="text" placeholder="body mass index">
+            <br>
+            <div class="dropdown">
+                <input class="dropdown-input" id="selectedItem" placeholder="physical activity">
+                <div class="dropdown-content">
+                    <a href="#" onclick="selectItem('Item 1')">Item 1</a>
+                    <a href="#" onclick="selectItem('Item 2')">Item 2</a>
+                    <a href="#" onclick="selectItem('Item 3')">Item 3</a>
+                </div>
+            </div>
+            <br>
+            <div class="dropdown">
+                <input class="dropdown-input" id="selectedItem" placeholder="smoking habit">
+                <div class="dropdown-content">
+                    <a href="#" onclick="selectItem('smoker')">smoker</a>
+                    <a href="#" onclick="selectItem('non-smoker')">non-smoker</a>
+                </div>
+            </div>
+            <br>
+            <button type="submit">submit</button>
+            <br>
+            <input type="text" placeholder="results" class="result">
+            <br>
+            <button>book appointment</button>
+        </section>
+    </div>
+
+    <section class="navbar">
+        <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
+        <a href="profile.html"><i class="fa fa-user fa-2x"></i></a>
+        <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+    </section>
+    <script>
+        function selectItem(item) {
+            document.getElementById('selectedItem').value = item;
+            document.getElementById('selectedItem').value = smoker;
+        }
+    </script>
+</body>
+
+</html
