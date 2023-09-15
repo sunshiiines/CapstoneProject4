@@ -11,53 +11,84 @@
 
 <body>
     <div>
-        <header>
-                <div class="navbar-content">
-                <a href="index.html"><i class="fa fa-home fa-2x"></i></a>
-                </div>
-                <div class="navbar-contents">
-                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bell fa-2x"></i></a>
-                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-2x"></i></a>
-                </div>
+
+        <header class="navbar-top">
+            <div class="navbar-content">
+            <a href="index.html"><i class="fa fa-home fa-3x"></i></a>  
+            <div class="bars">
+            <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bell fa-3x"></i></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-3x"></i></a>
+            </div>
+            </div>
         </header>
+        <br>
 
-        <section class="content">
-            <h1>Hello User,</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
+        <div class="section">
+            <section class="content">
+                <h1>Hello User,</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
 
-            <input type="text" placeholder="body mass index">
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="physical activity">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('Item 1')">Item 1</a>
-                    <a href="#" onclick="selectItem('Item 2')">Item 2</a>
-                    <a href="#" onclick="selectItem('Item 3')">Item 3</a>
+                <input type="number" placeholder="body mass index">
+                <br>
+                <input type="number" placeholder="age">
+                <br>
+                <div class="dropdown">
+                    <input class="dropdown-input" id="selectedItem" placeholder="physical activity">
+                    <div class="dropdown-content">
+                        <a href="#" onclick="selectItem('Item 1')">less than 30 minutes</a>
+                        <a href="#" onclick="selectItem('Item 2')">30 minutes or more</a>
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="smoking habit">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('smoker')">smoker</a>
-                    <a href="#" onclick="selectItem('non-smoker')">non-smoker</a>
+                <br>
+                <div class="dropdown">
+                    <input class="dropdown-input" id="selectedItem" placeholder="occupation">
+                    <div class="dropdown-content">
+                        <a href="#" onclick="selectItem('Item 1')">civil servant/non-government employee</a>
+                        <a href="#" onclick="selectItem('Item 2')">self-employee/subsistence</a>
+                        <a href="#" onclick="selectItem('Item 3')">farming</a>
+                        <a href="#" onclick="selectItem('Item 4')">unemployed/retired</a>
+                    </div>
                 </div>
-            </div>
-            <br>
-            <button type="submit">submit</button>
-            <br>
-            <input type="text" placeholder="results" class="result">
-            <br>
-            <button>book appointment</button>
-        </section>
+                <br>
+                <div class="dropdown">
+                    <input class="dropdown-input" id="selectedItem" placeholder="level of education">
+                    <div class="dropdown-content">
+                        <a href="#" onclick="selectItem('Item 1')">elementary</a>
+                        <a href="#" onclick="selectItem('Item 2')">junior high</a>
+                        <a href="#" onclick="selectItem('Item 3')">senior high or higher</a>
+                    </div>
+                </div>
+                <br>
+                <div class="dropdown">
+                    <input class="dropdown-input" id="selectedItem" placeholder="smoking habit">
+                    <div class="dropdown-content">
+                        <a href="#" onclick="selectItem('smoker')">smoker</a>
+                        <a href="#" onclick="selectItem('non-smoker')">non-smoker</a>
+                    </div>
+                </div>
+                <br>
+                <div class="radios">
+                    <input type="radio" name="male-female" id="male"> male
+                    <input type="radio" name="male-female" id="female"> female
+                </div>
+                <br>
+                <button type="submit">submit</button>
+                <br>
+                <input type="text" placeholder="results" class="result">
+
+            </section>
+        </div>
     </div>
 
-    <section class="navbar">
-        <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
-        <a href="profile.html"><i class="fa fa-user fa-2x"></i></a>
-        <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+    <section class="navbar-bottom">
+        <div class="navbar-items">
+            <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
+            <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
+            <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+        </div>
     </section>
+
     <script>
         function selectItem(item) {
             document.getElementById('selectedItem').value = item;
