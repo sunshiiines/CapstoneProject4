@@ -3,52 +3,84 @@
 
 <head>
     <meta charset="UTF-8">
-    <met<!DOCTYPE html>
-        <html lang="en">
-        
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>community support</title>
-            <link rel="stylesheet" href="style.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        </head>
-        
-        <body>
-            <header class="navbar-top">
-                <div class="navbar-content">
-                <a href="index.html"><i class="fa fa-home fa-3x"></i></a>  
-                <div class="bars">
-                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bell fa-3x"></i></a>
-                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-3x"></i></a>
-                </div>
-                </div>
-            </header>
-                <br>
-                <h1 class="content">community support</h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>community support</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-                <section class="content">
-                    <input type="search" name="search" id="search" placeholder="search">
-                    <i class="fa fa-search fa-2x"></i>
-                    <input type="radio" name="posts-events" id="posts">posts
-                    <input type="radio" name="posts-events" id="events">events
-                    <br>
-                    <input type="text" placeholder="write post here..." class="result">
-                    <br>
-                    <button type="submit">share</button>
-                    <hr>
-                    <h2>posts</h2>
-                    <br>
-                </section> 
-            
-            <section class="navbar-bottom">
-                <div class="navbar-items">
-                    <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
-                    <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
-                    <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
-                </div>
-            </section>
-        
-           
-        </body>
-        </html>
+<body>
+    <nav class="navbar-top">
+        <div class="navbar-content">
+            <ul>
+                <a href="index.html"><i class="fa fa-home fa-3x"></i></a>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <a href="http://" target="" rel="noopener noreferrer"><i class="fa fa-bell fa-3x"></i></a>
+                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-3x"></i></a>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <!-- <div class="notifications-tab">
+        <button id="open-notifications"><a href="http://" target="" rel="noopener noreferrer"><i
+                    class="fa fa-bell fa-3x"></i></a></button>
+        <div class="notifications-content">
+            <!-- Notifications will appear here --
+            <p>this is a notification</p>
+        </div>
+    </div> -->
+
+    <div class="section">
+        <h1 class="content">community support</h1>
+        <section class="content">
+            <input type="search" name="search" id="search" placeholder="search">
+            <i class="fa fa-search fa-2x"></i>
+            <br>
+            <input type="radio" name="posts-events" id="posts">posts
+            <input type="radio" name="posts-events" id="events">events
+            <br>
+            <input type="text" placeholder="write post here..." class="result">
+            <br>
+            <button type="submit">share</button>
+            <hr>
+            <h2>posts</h2>
+            <br>
+        </section>
+    </div>
+
+    <nav class="navbar-bottom">
+        <div class="navbar-content">
+            <ul>
+                <li></li>
+                <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
+                <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
+                <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+                <li></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        const openButton = document.getElementById('open-notifications');
+        const notificationsContent = document.querySelector('.notifications-content');
+
+        openButton.addEventListener('click', () => {
+            notificationsContent.style.display = notificationsContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close notifications when clicking outside the tab
+        document.addEventListener('click', (event) => {
+            if (!notificationsContent.contains(event.target) && event.target !== openButton) {
+                notificationsContent.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

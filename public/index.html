@@ -10,84 +10,91 @@
 </head>
 
 <body>
-    <div>
-
-        <header class="navbar-top">
-            <div class="navbar-content">
-            <a href="index.html"><i class="fa fa-home fa-3x"></i></a>  
-            <div class="bars">
-            <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bell fa-3x"></i></a>
-            <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-3x"></i></a>
-            </div>
-            </div>
-        </header>
-        <br>
-
-        <div class="section">
-            <section class="content">
-                <h1>Hello User,</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
-
-                <input type="number" placeholder="body mass index">
-                <br>
-                <input type="number" placeholder="age">
-                <br>
-                <div class="dropdown">
-                    <input class="dropdown-input" id="selectedItem" placeholder="physical activity">
-                    <div class="dropdown-content">
-                        <a href="#" onclick="selectItem('Item 1')">less than 30 minutes</a>
-                        <a href="#" onclick="selectItem('Item 2')">30 minutes or more</a>
-                    </div>
-                </div>
-                <br>
-                <div class="dropdown">
-                    <input class="dropdown-input" id="selectedItem" placeholder="occupation">
-                    <div class="dropdown-content">
-                        <a href="#" onclick="selectItem('Item 1')">civil servant/non-government employee</a>
-                        <a href="#" onclick="selectItem('Item 2')">self-employee/subsistence</a>
-                        <a href="#" onclick="selectItem('Item 3')">farming</a>
-                        <a href="#" onclick="selectItem('Item 4')">unemployed/retired</a>
-                    </div>
-                </div>
-                <br>
-                <div class="dropdown">
-                    <input class="dropdown-input" id="selectedItem" placeholder="level of education">
-                    <div class="dropdown-content">
-                        <a href="#" onclick="selectItem('Item 1')">elementary</a>
-                        <a href="#" onclick="selectItem('Item 2')">junior high</a>
-                        <a href="#" onclick="selectItem('Item 3')">senior high or higher</a>
-                    </div>
-                </div>
-                <br>
-                <div class="dropdown">
-                    <input class="dropdown-input" id="selectedItem" placeholder="smoking habit">
-                    <div class="dropdown-content">
-                        <a href="#" onclick="selectItem('smoker')">smoker</a>
-                        <a href="#" onclick="selectItem('non-smoker')">non-smoker</a>
-                    </div>
-                </div>
-                <br>
-                <div class="radios">
-                    <input type="radio" name="male-female" id="male"> male
-                    <input type="radio" name="male-female" id="female"> female
-                </div>
-                <br>
-                <button type="submit">submit</button>
-                <br>
-                <input type="text" placeholder="results" class="result">
-
-            </section>
+    <nav class="navbar-top">
+        <div class="navbar-content">
+            <ul>
+                <li></li>
+                <a href="index.html"><i class="fa fa-home fa-2x"></i></a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <a href="http://" target="" rel="noopener noreferrer"><i class="fa fa-bell fa-2x"></i></a>
+                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-2x"></i></a>
+                <li></li>
+            </ul>
         </div>
+    </nav>
+    <br>
+    <div class="section">
+        <form class="content">
+            <h1>Hello Mandisa,</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.</p>
+
+            <input type="number" placeholder="body mass index">
+            <br>
+            <input type="number" placeholder="age">
+            <br>
+            <div class="dropdown">
+                <input class="dropdown-input" id="selectedItem" placeholder="physical activity">
+                <div class="dropdown-content">
+                    <a href="#" onclick="selectItem('Item 1')">less than 30 minutes</a>
+                    <a href="#" onclick="selectItem('Item 2')">30 minutes or more</a>
+                </div>
+            </div>
+            <br>
+            <div class="dropdown">
+                <input class="dropdown-input" id="selectedItem" placeholder="occupation">
+                <div class="dropdown-content">
+                    <a href="#" onclick="selectItem('Item 1')">civil servant/non-government employee</a>
+                    <a href="#" onclick="selectItem('Item 2')">self-employee/subsistence</a>
+                    <a href="#" onclick="selectItem('Item 3')">farming</a>
+                    <a href="#" onclick="selectItem('Item 4')">unemployed/retired</a>
+                </div>
+            </div>
+            <br>
+            <div class="dropdown">
+                <input class="dropdown-input" id="selectedItem" placeholder="level of education">
+                <div class="dropdown-content">
+                    <a href="#" onclick="selectItem('Item 1')">elementary</a>
+                    <a href="#" onclick="selectItem('Item 2')">junior high</a>
+                    <a href="#" onclick="selectItem('Item 3')">senior high or higher</a>
+                </div>
+            </div>
+            <br>
+            <div class="dropdown">
+                <input class="dropdown-input" id="selectedItem" placeholder="smoking habit">
+                <div class="dropdown-content">
+                    <a href="#" onclick="selectItem('smoker')">smoker</a>
+                    <a href="#" onclick="selectItem('non-smoker')">non-smoker</a>
+                </div>
+            </div>
+            <br>
+            <div class="radios">
+                <p><input type="radio" name="male-female" id="male">male</p> 
+                <p><input type="radio" name="male-female" id="female">female</p>
+            </div>
+            <br>
+            <button type="submit">submit</button>
+            <br>
+            <input type="text" placeholder="results" class="result">
+
+        </form>
     </div>
-
-    <section class="navbar-bottom">
-        <div class="navbar-items">
-            <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
-            <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
-            <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+    <br>
+    <nav class="navbar-bottom">
+        <div class="navbar-content">
+            <ul>
+                <li></li>
+                <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
+                <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
+                <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+                <li></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
     <script>
         function selectItem(item) {

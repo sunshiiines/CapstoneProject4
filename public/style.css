@@ -1,148 +1,162 @@
-body{
+body {
     background-image: url("/images/background.jpeg");
     background-size: cover;
+    font-family: sans-serif;
     height: 100vh;
     display: flex;
-    align-items: normal; 
+    align-items: normal;
     color: white;
     margin-top: 0;
-    height: 900px; /* Add enough content to make scrolling necessary */
+    height: 900px;
+    /* Add enough content to make scrolling necessary */
     width: 100%;
-}        
+}
+
+
 /* Style for the navigation bar at the top */
-.navbar-top {  
+.navbar-top {
     position: fixed;
     top: 0;
-    margin-top: 0; 
+    margin-top: 0;
     /* display:inline-block; */
     width: 100%;
     height: 100px;
     background-color: rgba(51, 178, 223, 0.404);
-    backdrop-filter: blur(10px); 
-    color: rgb(0, 255, 213);
-    
+    backdrop-filter: blur(10px);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+
 /* Style for the fixed navigation bar at the bottom */
 .navbar-bottom {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: white;
-    color: navy;
+    background-color: rgb(234, 230, 230);
     padding: 10px 0;
     text-align: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+
 .navbar-content {
     text-align: left;
     margin-inline: 50px;
     color: white;
 }
-.home{
-    display: inline-block;
-}
-.bars{
-    text-align: right;
-}
-.navbar-items {
-    margin-right: 50px;
-}
+
 .content {
-    margin-top: 90px; /*Ensure content appears below the top navbar */
-    margin-bottom: 100px; /*Ensure content appears above the bottom navbar */ 
-    padding: 10px; 
-    text-align: center;
-    align-items: center;
-    justify-content: center;  
-    background-color: rgba(255, 255, 255, 0.096); /* Semi-transparent background to make the text readable */
-    border-radius: 10px;
-    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for better contrast */
-}
-        /* Style for the dropdown container */
-        .dropdown {
-            /*position: relative;*/
-            display: inline-block;
-        }
-
-        /* Style for the input element */
-        input {
-            background-color: rgb(215, 212, 212);
-            color: black;
-            padding: 10px;
-            margin: 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 400px; /* Adjust the width as needed */
-            align-items: center;
-            justify-items: center;
-            border: 2px black double;
-            
-        }
-        .result {
-            padding: 40px;
-        }
-
-        /* Style for the dropdown content */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        /* Style for dropdown content items */
-        .dropdown-content a {
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            color: #333;
-        }
-
-        /* Change color of dropdown content items on hover */
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        /* Show the dropdown content when the input is focused */
-        .dropdown-input:focus + .dropdown-content {
-            display: block;
-        }
-
-
-.radios {
-    margin: 5px;
-}
-.section { 
+    margin-top: 90px;
+    /*Ensure content appears below the top navbar */
+    margin-bottom: 100px;
+    /*Ensure content appears above the bottom navbar */
+    padding: 10px;
     text-align: center;
     align-items: center;
     justify-content: center;
-    /* background-color: #f5f5f5; */
+    background-color: rgba(255, 255, 255, 0.096);
+    /* Semi-transparent background to make the text readable */
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    /* Adjust the blur radius as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Optional: Add a shadow for better contrast */
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+/* Style for the dropdown container */
+.dropdown {
+    /*position: relative;*/
+    display: inline-block;
+}
+
+/* Style for the input element */
+input {
+    background-color: rgb(215, 212, 212);
+    color: black;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 400px;
+    /* Adjust the width as needed */
+    align-items: center;
+    justify-items: center;
+    border: 2px rgb(95, 90, 90) double;
+
+}
+
+.result {
+    padding: 40px;
+}
+
+/* Style for the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 400px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Style for dropdown content items */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+/* Change color of dropdown content items on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown content when the input is focused */
+.dropdown-input:focus+.dropdown-content {
+    display: block;
+}
+
+
+.radios {
+    margin: 0%;
+}
+
+.section {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #f5f5f5;  */
     padding: 20px;
-    margin-top: 60px auto; /* Adjust the margin-top value to match the header's height */
-        } 
+    margin-top: 60px auto;
+    /* Adjust the margin-top value to match the header's height */
+}
+
 /* Style for the page content */
 
 .directory {
-    margin-top: 90px; /*Ensure content appears below the top navbar */
-    margin-bottom: 10px; /*Ensure content appears above the bottom navbar */ 
-    padding: 10px; 
+    margin: 10px;
+    padding: 10px;
     text-align: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.096); /* Semi-transparent background to make the text readable */
+    background-color: rgba(255, 255, 255, 0.096);
+    /* Semi-transparent background to make the text readable */
     border-radius: 10px;
-    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for better contrast */
+    backdrop-filter: blur(10px);
+    /* Adjust the blur radius as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   flex: 3;
 }
 
 
 button {
-    background-color: navy;
+    background-color: rgb(9, 9, 244);
     width: 75%;
     color: #f1f1f1;
     text-align: center;
@@ -151,7 +165,40 @@ button {
     margin: 15px;
     border: 1px white solid;
     cursor: pointer;
-    width: 400px; /* Adjust the width as needed */
+    width: 400px;
+    /* Adjust the width as needed */
     align-items: center;
     justify-items: center;
+}
+@media (min-width : 960px) {
+    .doctors {
+        display: flex;
+    }
+}
+/* i {
+    color: grey;
+} */
+
+/* styles.css */
+.notifications-tab {
+    position: relative;
+}
+
+#open-notifications {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.notifications-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
