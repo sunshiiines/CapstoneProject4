@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            /* you can use a more complete font-family from VSCode as well */
+            font-family: arial;
+            /* background-color: black; */
+        }
+        i {
+            color: black;
+        }
+
+        .header {
+            background-color: lightgreen;
+            padding: 1em;
+        }
+
+        .menu li {
+            list-style: none;
+            margin: 0em;
+            padding: 0em;
+            list-style: none;
+        }
+
+        .menu a {
+            /* Ensure one can click anyware in the li for the link */
+            padding: 1em;
+            display: block;
+            width: 6em;
+        }
+
+        .menu a:hover {
+            /* Change the menu color to darker green when hovering over a link*/
+            background-color: lightseagreen;
+        }
+
+        .main {
+            background-color: lightseagreen;
+        }
+
+        .content {
+            padding: 1em;
+        }
+
+        .footer {
+            background-color: lightgreen;
+            padding: 1em;
+        }
+
+        .side-bar {
+            float: left;
+            width: 25%;
+            padding: 1em;
+        }
+
+        .clearfix {
+            overflow: auto;
+            zoom: 1;
+        }
+
+        .notifications-tab {
+            position: relative;
+        }
+
+        #open-notifications {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .notifications-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 300px;
+            background-color: red;
+            border: 1px solid brown;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: black;
+            min-width: 400px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Style for dropdown content items */
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: grey;
+        }
+
+        /* Change color of dropdown content items on hover */
+        .dropdown-content a:hover {
+            background-color: blue;
+        }
+
+        /* Show the dropdown content when the input is focused */
+        .dropdown-input:focus+.dropdown-content {
+            display: block;
+        }
+
+        @media(min-width:800px) {
+            .side-bar {
+                float: left;
+                width: 25%;
+            }
+        }
+
+        @media(min-width:800px) {
+            /* Other css is here still */
+
+            .menu {
+                display: flex;
+            }
+        }
+        /* Style for the dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the button */
+        .dropdown-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style for the dropdown content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Style for dropdown content items */
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
+
+        /* Change color of dropdown content items on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown content when the button is hovered over */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div x-data="{ isOpen: false }">
+        <li class="notifications-tab">
+            <i @click="isOpen = !isOpen" class="fa fa-bell fa-2x"></i>
+            <div x-show="isOpen" class="notifications-content">
+                <!-- Notifications will appear here -->
+                <div class="notification">
+                    <p>You have a new message!</p>
+                    <span class="timestamp">2 minutes ago</span>
+                </div>
+            </div>
+        </li>
+    </div>
+    
+    <div x-data="{ isOpen: false }">
+        <!-- Toggle button for the menu -->
+        <button @click="isOpen = !isOpen">Toggle Menu</button>
+    
+        <!-- Menu container -->
+        <nav x-show="isOpen" class="menu">
+            <!-- Menu items -->
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <span x-data="{ selectedOption: 'option1' }">
+        <label>
+            <input type="radio" x-model="selectedOption" value="option1"> Option 1
+        </label>
+        <label>
+            <input type="radio" x-model="selectedOption" value="option2"> Option 2
+        </label>
+        <label>
+            <input type="radio" x-model="selectedOption" value="option3"> Option 3
+        </label>
+    
+        <p>Selected option: <span x-text="selectedOption"></span></p>
+    </span>
+    <div class="dropdown">
+        <button class="dropdown-button">Dropdown</button>
+        <div class="dropdown-content">
+            <a href="#">Item 1</a>
+            <a href="#">Item 2</a>
+            <a href="#">Item 3</a>
+        </div>
+    </div>
+
+    <div x-data="{ isOpen: false, selectedOption: '', options: ['Option 1', 'Option 2', 'Option 3'] }">
+        <div class="dropdown">
+            <input type="text" x-model="selectedOption" @click="isOpen = !isOpen" placeholder="Select an option">
+            <button @click="isOpen = !isOpen">&#9660;</button>
+            <ul x-show="isOpen" @click.away="isOpen = false">
+                <li x-for="(option, index) in options" @click="selectedOption = option">{{ option }}</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Main heading</h1>
+            <ul class="menu">
+                <li><a href="#">Menu item 1</a></li>
+                <li><a href="#">Menu item 2</a></li>
+                <li><a href="#">Menu item 3</a></li>
+            </ul>
+        </div>
+        <div class="main clearfix">
+            <div class="side-bar">
+                <h2>side bar</h2>
+                this is the side bar
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Pellentesque nec nam aliquam sem et tortor consequat id.
+                Elit scelerisque mauris pellentesque pulvinar pellentesque habitant.
+                Aliquam ut porttitor leo a. Quis eleifend quam adipiscing vitae proin.
+                Ut faucibus pulvinar elementum integer enim neque volutpat.
+                Pellentesque diam volutpat commodo sed egestas egestas.
+                Vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam.
+                Augue mauris augue neque gravida in fermentum et sollicitudin ac.
+                Metus aliquam eleifend mi in.
+                Tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium.
+                Lobortis mattis aliquam faucibus purus in massa.
+                Morbi tristique senectus et netus et. Sed id semper risus in.
+                Ut sem nulla pharetra diam sit.
+                Nibh venenatis cras sed felis eget velit aliquet.
+            </div>
+            <div class="content">
+                <h2>Main content</h2>
+                this is the main content
+            </div>
+        </div>
+        <div class="footer">
+            <h4>@footer inc</h4>
+        </div>
+    </div>
+
+    <br>
+    <div class="dropdown">
+        <button class="dropdown-button">Dropdown</button>
+        <div class="dropdown-content">
+            <a href="#">Item 1</a>
+            <a href="#">Item 2</a>
+            <a href="#">Item 3</a>
+        </div>
+    </div>
+    <br>
+
+
+    <script>
+        const openButton = document.getElementById('open-notifications');
+        const notificationsContent = document.querySelector('.notifications-content');
+
+        openButton.addEventListener('click', () => {
+            notificationsContent.style.display = notificationsContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close notifications when clicking outside the tab
+        document.addEventListener('click', (event) => {
+            if (!notificationsContent.contains(event.target) && event.target !== openButton) {
+                notificationsContent.style.display = 'none';
+            }
+        });
+        const notification = document.createElement('div');
+        notification.classList.add('notification');
+        notification.innerHTML = `
+            <p>You have a new message!</p>
+            <span class="timestamp">2 minutes ago</span>
+            `;
+        notificationsContent.appendChild(notification);
+    </script>
+</body>
+
+</html>

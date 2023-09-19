@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -14,14 +15,34 @@
         <div class="navbar-content">
             <ul>
                 <li></li>
-                <a href="index.html"><i class="fa fa-home fa-2x"></i></a></li>
+                <a href="index.html" class="notifications-tab"><i class="fa fa-home fa-2x"></i></a>
                 <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
-                <a href="http://" target="" rel="noopener noreferrer"><i class="fa fa-bell fa-2x"></i></a>
-                <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa fa-bars fa-2x"></i></a>
+                <li class="notifications-tab">
+                    <i id="open-notifications" class="fa fa-bell fa-2x"></i>
+                    <div class="notifications-content">
+                        <!-- Notifications will appear here -->
+                    </div>
+                </li>
+                <div class="menu-bar">
+                    <div x-data="{ isOpen: false }">
+                        <!-- Toggle button for the menu -->
+                        <i @click="isOpen = !isOpen" class="fa fa-bars fa-2x"></i>
+                        <!-- Menu container -->
+                        <span x-show="isOpen" class="menu">
+                            <!-- Menu items -->
+                            <ol>
+                                <i><a href="index.html">Home</a></li>
+                                    <li><a href="languages.html">Languages</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Logout</a></li>
+                            </ol>
+                        </span>
+                    </div>
+                </div>
                 <li></li>
             </ul>
         </div>
@@ -72,10 +93,14 @@
                 </div>
             </div>
             <br>
-            <div class="radios">
-                <p><input type="radio" name="male-female" id="male">male</p> 
-                <p><input type="radio" name="male-female" id="female">female</p>
-            </div>
+            <span x-data="{ selectedOption: 'male' }">
+                <label>
+                    <input type="radio" x-model="selectedOption" value="Male"> Male
+                </label>
+                <label>
+                    <input type="radio" x-model="selectedOption" value="Female"> Female
+                </label>
+            </span>
             <br>
             <button type="submit">submit</button>
             <br>
@@ -101,6 +126,28 @@
             document.getElementById('selectedItem').value = item;
             document.getElementById('selectedItem').value = smoker;
         }
+    </script>
+    <script>
+        const openButton = document.getElementById('open-notifications');
+        const notificationsContent = document.querySelector('.notifications-content');
+
+        openButton.addEventListener('click', () => {
+            notificationsContent.style.display = notificationsContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close notifications when clicking outside the tab
+        document.addEventListener('click', (event) => {
+            if (!notificationsContent.contains(event.target) && event.target !== openButton) {
+                notificationsContent.style.display = 'none';
+            }
+        });
+        const notification = document.createElement('div');
+        notification.classList.add('notification');
+        notification.innerHTML = `
+            <p>You have a new message!</p>
+            <span class="timestamp">2 minutes ago</span>
+            `;
+        notificationsContent.appendChild(notification);
     </script>
 </body>
 
