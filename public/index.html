@@ -5,110 +5,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script>index.js</script>
+    <script>recommendations.html</script>
+    <script>app.html</script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
-
 <body>
-    <nav class="navbar-top">
-        <div class="navbar-content">
-            <ul>
-                <li></li>
-                <a href="index.html" class="notifications-tab"><i class="fa fa-home fa-2x"></i></a>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li class="notifications-tab">
-                    <i id="open-notifications" class="fa fa-bell fa-2x"></i>
-                    <div class="notifications-content">
-                        <!-- Notifications will appear here -->
-                    </div>
-                </li>
-                <div class="menu-bar">
-                    <div x-data="{ isOpen: false }">
-                        <!-- Toggle button for the menu -->
-                        <i @click="isOpen = !isOpen" class="fa fa-bars fa-2x"></i>
-                        <!-- Menu container -->
-                        <span x-show="isOpen" class="menu">
-                            <!-- Menu items -->
-                            <ol>
-                                <i><a href="index.html">Home</a></li>
-                                    <li><a href="languages.html">Languages</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Logout</a></li>
-                            </ol>
-                        </span>
-                    </div>
-                </div>
-                <li></li>
-            </ul>
+    <section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa fa-home fa-2x"></i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="languages.html">Languages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <br>
-    <div class="section">
-        <form class="content">
-            <h1>Hello Mandisa,</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua.</p>
+    </section>
+    <section>
+    <div class="container mt-5">
+        <form>
+            <h1>Hello!</h1>
+            <p>Curious about your hypertension status? Don't worry; our app has you covered! Simply provide the necessary details below, and we'll reveal your status.</p>
 
-            <input type="number" placeholder="body mass index">
-            <br>
-            <input type="number" placeholder="age">
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="physical activity">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('Item 1')">less than 30 minutes</a>
-                    <a href="#" onclick="selectItem('Item 2')">30 minutes or more</a>
-                </div>
-            </div>
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="occupation">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('Item 1')">civil servant/non-government employee</a>
-                    <a href="#" onclick="selectItem('Item 2')">self-employee/subsistence</a>
-                    <a href="#" onclick="selectItem('Item 3')">farming</a>
-                    <a href="#" onclick="selectItem('Item 4')">unemployed/retired</a>
-                </div>
-            </div>
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="level of education">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('Item 1')">elementary</a>
-                    <a href="#" onclick="selectItem('Item 2')">junior high</a>
-                    <a href="#" onclick="selectItem('Item 3')">senior high or higher</a>
-                </div>
-            </div>
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="smoking habit">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('smoker')">smoker</a>
-                    <a href="#" onclick="selectItem('non-smoker')">non-smoker</a>
-                </div>
-            </div>
-            <br>
-            <span x-data="{ selectedOption: 'male' }">
-                <label>
-                    <input type="radio" x-model="selectedOption" value="Male"> Male
-                </label>
-                <label>
-                    <input type="radio" x-model="selectedOption" value="Female"> Female
-                </label>
-            </span>
-            <br>
-            <button type="submit">submit</button>
-            <br>
-            <input type="text" placeholder="results" class="result">
+            <h2>Hypertension Prediction</h2>
 
+            <div x-data="{ 
+                Genetic_Pedigree_Coefficient: null,
+                Age: null,
+                BMI: null,
+                Sex: null,
+                Smoking: null,
+                Physical_activity: null,
+                salt_content_in_the_diet: null,
+                alcohol_consumption_per_day: null,
+                Level_of_Stress: null,
+                Chronic_kidney_disease: null
+            }">
+
+                <div class="form-group">
+                    <label for="Genetic_Pedigree_Coefficient">Genetic Pedigree Coefficient:</label>
+                    <input type="number" id="Genetic_Pedigree_Coefficient" class="form-control" x-model="Genetic_Pedigree_Coefficient">
+                </div>
+
+                <div class="form-group">
+                    <label for="Age">Age:</label>
+                    <input type="number" id="Age" class="form-control" x-model="Age">
+                </div>
+
+                <div class="form-group">
+                    <label for="BMI">BMI:</label>
+                    <input type="number" id="BMI" class="form-control" x-model="BMI">
+                </div>
+
+                <div class="form-group">
+                    <label for="Sex">Sex:</label>
+                    <select id="Sex" class="form-control" x-model="Sex">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Smoking">Smoking (Yes or No):</label>
+                    <select id="Smoking" class="form-control" x-model="Smoking">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Physical_activity">Physical Activity (Yes or No):</label>
+                    <select id="Physical_activity" class="form-control" x-model="Physical_activity">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <br> 
+                </div>
+
+                <div class="form-group">
+                    <label for="salt_content_in_the_diet">Salt Content in the Diet:</label>
+                    <input type="text" id="salt_content_in_the_diet" class="form-control" x-model="salt_content_in_the_diet">
+                    <br>
+                </div> 
+
+                <div class="form-group">
+                    <label for="alcohol_consumption_per_day">Alcohol Consumption per Day:</label>
+                    <input type="number" id="alcohol_consumption_per_day"class="form-control" x-model="alcohol_consumption_per_day">
+                    <br>
+                </div>
+            
+                <div class="form-group">
+                    <label for="Level_of_Stress">Level of Stress:</label>
+                    <input type="text" id="Level_of_Stress"class="form-control" x-model="Level_of_Stress">
+                    <br>
+                </div>    
+                <div class="form-group">
+                    <label for="Chronic_kidney_disease">Chronic Kidney Disease:</label>
+                    <select id="Chronic_kidney_disease" class="form-control"x-model="Chronic_kidney_disease">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                    <br>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
-    </div>
     <br>
+    <br>
+    <div><input type="text" placeholder="results" class="result"></div>
+</div>  
+<br>
+</section>
+<section>
     <nav class="navbar-bottom">
         <div class="navbar-content">
             <ul>
@@ -116,10 +141,12 @@
                 <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
                 <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
                 <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+                <a href="recommendations.html"><i class="fa fa-stethoscope fa-2x"></i></a>
                 <li></li>
             </ul>
         </div>
     </nav>
+</section>
 
     <script>
         function selectItem(item) {
@@ -150,5 +177,4 @@
         notificationsContent.appendChild(notification);
     </script>
 </body>
-
-</html
+</html>

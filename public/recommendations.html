@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypertension Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+            <style>
+                body {
+                    background-image:("/images/background.jpeg");
+                    background-size: cover; /* Cover the entire viewport */
+                    background-repeat: no-repeat; 
+                }
+            </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Hypertension Lifestyle Recommendations</h1>
+
+        <div id="recommendations" class="mt-4">
+            <!-- Recommendations table will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // Simulated prediction result (0 for low risk, 1 for high risk)
+        const hypertensionStatus = 1;
+
+        // Define recommendations based on hypertension status
+        const recommendations = {
+            0: [
+                "Exercise regularly.",
+                "Eat a healthy diet.",
+                "Reduce salt (sodium) in your diet.",
+                "Limit alcohol.",
+                "Get a good night's sleep.",
+                "Reduce stress."
+            ],
+            1: [
+                "Manage high blood pressure.",
+                "Exercise regularly.",
+                "Eat a healthy diet.",
+                "Reduce salt (sodium) in your diet.",
+                "Limit alcohol.",
+                "Quit tobacco.",
+                "Get a good night's sleep.",
+                "Reduce stress."
+            ]
+        };
+
+        // Get the recommendations container
+        const recommendationsContainer = document.getElementById("recommendations");
+
+        // Display personalized recommendations in a Bootstrap table
+        const recommendation = recommendations[hypertensionStatus];
+        if (recommendation) {
+            const table = document.createElement("table");
+            table.className = "table table-bordered";
+            const tableBody = document.createElement("tbody");
+
+            recommendation.forEach((item) => {
+                const row = document.createElement("tr");
+                const cell = document.createElement("td");
+                cell.textContent = item;
+                row.appendChild(cell);
+                tableBody.appendChild(row);
+            });
+
+            table.appendChild(tableBody);
+            recommendationsContainer.appendChild(table);
+        } else {
+            recommendationsContainer.innerHTML = "<p class='text-center'>No recommendations available.</p>";
+        }
+    </script>
+</body>
+</html>

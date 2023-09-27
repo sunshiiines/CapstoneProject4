@@ -13,7 +13,6 @@ body {
     width: 60%;
 }
 
-
 /* Style for the navigation bar at the top */
 .navbar-top {
     position: fixed;
@@ -69,6 +68,11 @@ nav ul, li  {
     justify-content: space-between;
     list-style: none;
 }
+
+/* Hide the language options by default
+#languageOptions {
+    display: none;
+} */
 
 /* Style for the dropdown container */
 .dropdown {
