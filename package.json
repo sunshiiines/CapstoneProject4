@@ -28,9 +28,13 @@
     "test": ""
   },
   "dependencies": {
+<<<<<<< HEAD
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "sqlite": "^5.0.1",
     "sqlite3": "^5.1.6"
+=======
+    "express": "^4.18.2"
+>>>>>>> ad1da067f54de845e6ee85ce0cff8040c52c36d3
   }
 }

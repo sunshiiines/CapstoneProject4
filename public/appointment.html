@@ -10,8 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<<<<<<< HEAD
 
 <body x-data="appointmentBooking">>
+=======
+<body>
+>>>>>>> ad1da067f54de845e6ee85ce0cff8040c52c36d3
     <nav class="navbar-top">
         <div class="navbar-content">
             <ul>
@@ -34,7 +38,7 @@
                         <i @click="isOpen = !isOpen" class="fa fa-bars fa-2x"></i>
                         <!-- Menu container -->
                         <span x-show="isOpen" class="menu">
-                            <!-- Menu items -->
+                            
                             <ol>
                                 <i><a href="index.html">Home</a></li>
                                     <li><a href="languages.html">Languages</a></li>
@@ -49,6 +53,7 @@
         </div>
     </nav>
     <br>
+<<<<<<< HEAD
     
     <div class="content">
         <h1>Book a Doctor's Appointment</h1>
@@ -110,15 +115,59 @@
             </section>
         </div>
     </div> -->
+=======
+    <div>
+    <div class="section">
+        <header class="content">Book a doctor's appointment below: <br>
+            <br>
+        <section class="directory ">
+        <form @submit.prevent="bookAppointment" class="appointment-form">
+            <div class="form-group">
+                <label for="appointment-date">Select Date:</label>
+                <input type="date" id="appointment-date" x-model="selectedDate">
+            </div>
+>>>>>>> ad1da067f54de845e6ee85ce0cff8040c52c36d3
 
+            <div class="form-group">
+                <label for="appointment-time">Select Time:</label>
+                <input type="time" id="appointment-time" x-model="selectedTime">
+            </div>
+
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" x-model="fullName">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" x-model="email">
+            </div>
+
+            <div class="form-group">
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor" x-model="selectedDoctor">
+                    <option value="doctor1">Doctor 1</option>
+                    <option value="doctor2">Doctor 2</option>
+                    <option value="doctor3">Doctor 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Book Appointment</button>
+            </div>
+        </form>
+    </header>
+    </div>
+    </div>
 
     <nav class="navbar-bottom">
         <div class="navbar-content">
             <ul>
                 <li></li>
-                <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
-                <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
-                <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
+                <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i>BP tracking</a>
+                <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i>Appointment</a>
+                <a href="community.html"><i class="fa fa-comments-o fa-2x"></i>Community support</a>
+                <a href="recommendations.html"><i class="fa fa-stethoscope fa-2x"></i>Recommendations</a>
                 <li></li>
             </ul>
         </div>

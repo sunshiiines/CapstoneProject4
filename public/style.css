@@ -3,7 +3,7 @@ body {
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
-    display: block;
+    display: block; 
     color: white;
     margin-top: 0;
     margin-left: 0;
@@ -12,13 +12,23 @@ body {
     text-align: center;  */
     width: 60%;
 }
+.container {
+    justify-content: center;
+    /* text-align: center ; */
+    align-items: baseline;
+    margin-top: 40px;
+}
 
+.appointment-form {
+    max-width: 900px;
+    margin: 0 auto;
+}
 
 /* Style for the navigation bar at the top */
 .navbar-top {
     position: fixed;
     top: 0;
-    margin-top: 0;
+    margin-top: 100;
     /* display:inline-block; */
     width: 100%;
     height: 100px;
@@ -78,6 +88,11 @@ nav ul, li  {
     justify-content: space-between;
     list-style: none;
 }
+
+/* Hide the language options by default
+#languageOptions {
+    display: none;
+} */
 
 /* Style for the dropdown container */
 .dropdown {
