@@ -7,10 +7,29 @@
     <title>home</title>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body x-data="{ 
+        inputs: {
+        Genetic_Pedigree_Coefficient: '',
+        Age: '',
+        Weight: '',
+        Height: '',
+        Sex: '',
+        Smoking: '',
+        Physical_activity: '',
+        salt_content_in_the_diet: '',
+        alcohol_consumption_per_day: '',
+        Level_of_Stress: 'High',
+        Chronic_kidney_disease: ''
+    },
+    results: {
+        healthStatus: '',
+        recommendation: ''
+    }
+}">
     <nav class="navbar-top">
         <div class="navbar-content">
             <ul>
@@ -47,68 +66,78 @@
             </ul>
         </div>
     </nav>
-    <br>
-    <div class="section">
-        <form class="content">
-            <h1>Hello Mandisa,</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua.</p>
 
-            <input type="number" placeholder="body mass index">
-            <br>
-            <input type="number" placeholder="age">
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="physical activity">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('Item 1')">less than 30 minutes</a>
-                    <a href="#" onclick="selectItem('Item 2')">30 minutes or more</a>
-                </div>
-            </div>
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="occupation">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('Item 1')">civil servant/non-government employee</a>
-                    <a href="#" onclick="selectItem('Item 2')">self-employee/subsistence</a>
-                    <a href="#" onclick="selectItem('Item 3')">farming</a>
-                    <a href="#" onclick="selectItem('Item 4')">unemployed/retired</a>
-                </div>
-            </div>
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="level of education">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('Item 1')">elementary</a>
-                    <a href="#" onclick="selectItem('Item 2')">junior high</a>
-                    <a href="#" onclick="selectItem('Item 3')">senior high or higher</a>
-                </div>
-            </div>
-            <br>
-            <div class="dropdown">
-                <input class="dropdown-input" id="selectedItem" placeholder="smoking habit">
-                <div class="dropdown-content">
-                    <a href="#" onclick="selectItem('smoker')">smoker</a>
-                    <a href="#" onclick="selectItem('non-smoker')">non-smoker</a>
-                </div>
-            </div>
-            <br>
-            <span x-data="{ selectedOption: 'male' }">
-                <label>
-                    <input type="radio" x-model="selectedOption" value="Male"> Male
-                </label>
-                <label>
-                    <input type="radio" x-model="selectedOption" value="Female"> Female
-                </label>
-            </span>
-            <br>
-            <button type="submit">submit</button>
-            <br>
-            <input type="text" placeholder="results" class="result">
+    <section class="content">
+        <h1>Hello Mandisa.</h1>
+        <p>Welcome to the app, fill in the health form below to get an assessment.</p>
 
+        <form @submit.prevent="calculateBloodPressure"></form>
+        <label>Family history of hypertension:</label><br>
+        <select x-model="inputs.Genetic_Pedigree_Coefficient">
+            <option value="1.00 - 0.5">Yes, my parent/s is hypertensive</option>
+            <option value="0.4 - 0.1">Yes, my grandparent/s are hypertensive</option>
+            <option value="0.0">No</option>
+        </select><br>
+
+        <label>Age:</label><br>
+        <input type="number" x-model.number="inputs.Age"><br>
+
+        <label>Weight (kg):</label><br>
+        <input type="number" x-model.number="inputs.Weight"><br>
+
+        <label>Height (cm):</label><br>
+        <input type="number" x-model.number="inputs.Height"><br>
+
+        <label>Sex:</label><br>
+        <select x-model="inputs.Sex"><br>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label>Smoking:</label><br>
+        <select x-model="inputs.Smoking">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label>Physical Activity (minutes/day):</label><br>
+        <input type="number" x-model.number="inputs.Physical_activity"><br>
+
+        <label>Salt Content in the Diet (g/day):</label><br>
+        
+        <input type="number" x-model.number="inputs.salt_content_in_the_diet"><br>
+
+        <label>Alcohol Consumption (units/day):</label><br>
+        <input type="number" x-model.number="inputs.alcohol_consumption_per_day"><br>
+
+        <label>Level of Stress:</label><br>
+        <select x-model="inputs.Level_of_Stress">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select><br>
+
+        <label>Chronic Kidney Disease:</label><br>
+        <select x-model="inputs.Chronic_kidney_disease">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+        <br>
+        <!-- <button type="submit">Calculate</button> -->
+        <button x-on:click="calculateBloodPressure">
+            Predict
+        </button>
         </form>
+
+    </section>
+    <div x-show="results.healthStatus">
+        <h2>Health Status:</h2>
+        <p x-text="results.healthStatus"></p>
+        <h2>Recommendation:</h2>
+        <p x-text="results.recommendation"></p>
     </div>
-    <br>
+    </section>
+
     <nav class="navbar-bottom">
         <div class="navbar-content">
             <ul>
@@ -122,10 +151,71 @@
     </nav>
 
     <script>
-        function selectItem(item) {
-            document.getElementById('selectedItem').value = item;
-            document.getElementById('selectedItem').value = smoker;
+        // function calculateResults() {
+        //     const inputs = Alpine.store('inputs');
+        //     const results = Alpine.store('results');
+
+        //     if (inputs.Age >= 18 && inputs.Age <= 50) {
+        //         results.healthStatus = 'Good';
+        //         results.recommendation = 'Maintain a balanced diet and exercise regularly.';
+        //     } else {
+        //         results.healthStatus = 'Needs assessment';
+        //         results.recommendation = 'Consult a healthcare professional for a detailed assessment.';
+        //     }
+        // }
+
+        // Alpine.store('calculateResults', calculateResults);
+        // 
+        
+       
+        function calculateBloodPressure() {
+        const inputs = Alpine.store('inputs');
+        const results = Alpine.store('results');
+
+        // Retrieve values from form inputs
+        const gender = inputs.Sex;
+        const age = inputs.Age;
+        const familyHistory = inputs.Genetic_Pedigree_Coefficient === '1.00 - 0.5';
+        const weight = inputs.Weight;
+        const height = inputs.Height;
+        const smoker = inputs.Smoking === 'Yes';
+        const activityMinutes = inputs.Physical_activity;
+        const saltContent = inputs.salt_content_in_the_diet;
+        const alcoholUnits = inputs.alcohol_consumption_per_day;
+        const stressLevel = inputs.Level_of_Stress;
+        const kidneyDisease = inputs.Chronic_kidney_disease === 'Yes';
+
+        let bloodPressure;
+
+        if (
+            gender === 'Female' &&
+            age <= 30 &&
+            !familyHistory &&
+            weight / Math.pow(height / 100, 2) < 25 && // Calculate BMI
+            !smoker &&
+            activityMinutes >= 30 &&
+            activityMinutes <= 60 &&
+            saltContent < 50 &&
+            alcoholUnits === 50 &&
+            stressLevel === 'Low' &&
+            !kidneyDisease
+        ) {
+            bloodPressure = 'Normal Blood Pressure';
+        } else {
+            bloodPressure = 'Abnormal Blood Pressure';
         }
+
+        results.healthStatus = bloodPressure;
+
+        if (bloodPressure === 'Normal Blood Pressure') {
+            results.recommendation = 'Maintain a healthy lifestyle.';
+        } else {
+            results.recommendation = 'Consult a healthcare professional for further evaluation.';
+        }
+    }
+
+    Alpine.store('calculateBloodPressure', calculateBloodPressure);
+
     </script>
     <script>
         const openButton = document.getElementById('open-notifications');
@@ -150,5 +240,4 @@
         notificationsContent.appendChild(notification);
     </script>
 </body>
-
-</html
+</html>
