@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="index.js"></script>
     <script src="recommendations.html"></script>
     <script src="app.html"></script>
@@ -33,10 +32,10 @@
                                 <a class="nav-link" href="languages.html">Languages</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="profile.html">
                                     <i class="fa fa-user"></i> Profile
                                 </a>
                             </li>
@@ -81,12 +80,9 @@
     <section>
         <div class="container mt-5">
             <form>
-                <h1>Hello!</h1>
+                <p>Hello! Welcome to our hypertension prediction application!</p>
                 <p>Curious about your hypertension status? Don't worry; our app has you covered! Simply provide the
                     necessary details below, and we'll reveal your status.</p>
-
-                <h2>Predict your hypertension</h2>
-
                 <div x-data="{ 
                 Genetic_Pedigree_Coefficient: null,
                 Age: null,
@@ -182,10 +178,10 @@
             <div class="navbar-content">
                 <ul>
                     <li></li>
-                    <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i></a>
-                    <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i></a>
-                    <a href="community.html"><i class="fa fa-comments-o fa-2x"></i></a>
-                    <a href="recommendations.html"><i class="fa fa-stethoscope fa-2x"></i></a>
+                    <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i>BP tracking</a>
+                    <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i>Appointment</a>
+                    <a href="community.html"><i class="fa fa-comments-o fa-2x"></i>Community support</a>
+                    <a href="recommendations.html"><i class="fa fa-stethoscope fa-2x"></i>Recommendations</a>
                     <li></li>
                 </ul>
             </div>
