@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login</title>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="login.js"></script>
+
+</head>
+
+<body>
+  <div x-data="user">
+    <h1>Login</h1>
+  
+    <form action="/login" method="post" x-on:submit="login()">
+      <input type="text" name="username" placeholder="Username" x-model="username"
+        x-bind:class="{ 'invalid': username.length < 3 }">
+      <input type="password" name="password" placeholder="Password" x-model="password"
+        x-bind:class="{ 'invalid': password.length < 6 }">
+      <button type="submit"  x-on:click="login()" x-bind:disabled="username.length < 3 || password.length < 6">Login</button>
+    </form>
+  
+    <button type="submit" x-on:click="logout()" x-bind:disabled="!isLoggedIn()">Logout</button>
+  </div>
+
+  </body>
+  </head>
+
+<!-- <div x-data="user">
+    <div class="user-buttons">
+      <button x-on:click="login" x-show="!loggedIn">Login</button>
+      <button x-on:click="logout" x-show="loggedIn">Logout</button>
+    </div>
+  </div> -->
+

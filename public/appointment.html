@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
     <nav class="navbar-top">
         <div class="navbar-content">
@@ -33,7 +32,7 @@
                         <i @click="isOpen = !isOpen" class="fa fa-bars fa-2x"></i>
                         <!-- Menu container -->
                         <span x-show="isOpen" class="menu">
-                            <!-- Menu items -->
+                            
                             <ol>
                                 <i><a href="index.html">Home</a></li>
                                     <li><a href="languages.html">Languages</a></li>
@@ -48,31 +47,48 @@
         </div>
     </nav>
     <br>
-
+    <div>
     <div class="section">
-        <h1 class="content">Doctor Directory</h1>
-        <div class="doctors">
-            <section class="directory">
-                <h3>Dr One</h3>
-                <p>453 Doctor's street, Dr Town, Durban</p>
-                <p>031 245 7658</p>
-                <button>book appointment</button>
-            </section>
-            <section class="directory">
-                <h3>Dr Two</h3>
-                <p>453 Doctor Ave, Dr City, Johannesburg</p>
-                <p>011 245 7658</p>
-                <button>book appointment</button>
-            </section>
-            <section class="directory">
-                <h3>Dr Three</h3>
-                <p>453 DR lane, Doctorsburg, Cape Town</p>
-                <p>021 245 7658</p>
-                <button>book appointment</button>
-            </section>
-        </div>
-    </div>
+        <header class="content">Book a doctor's appointment below: <br>
+            <br>
+        <section class="directory ">
+        <form @submit.prevent="bookAppointment" class="appointment-form">
+            <div class="form-group">
+                <label for="appointment-date">Select Date:</label>
+                <input type="date" id="appointment-date" x-model="selectedDate">
+            </div>
 
+            <div class="form-group">
+                <label for="appointment-time">Select Time:</label>
+                <input type="time" id="appointment-time" x-model="selectedTime">
+            </div>
+
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" x-model="fullName">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" x-model="email">
+            </div>
+
+            <div class="form-group">
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor" x-model="selectedDoctor">
+                    <option value="doctor1">Doctor 1</option>
+                    <option value="doctor2">Doctor 2</option>
+                    <option value="doctor3">Doctor 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Book Appointment</button>
+            </div>
+        </form>
+    </header>
+    </div>
+    </div>
 
     <nav class="navbar-bottom">
         <div class="navbar-content">
