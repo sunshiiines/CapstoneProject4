@@ -261,6 +261,17 @@ button {
     display: list-item;
 }
 
+.success-message {
+    color: green;
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
 /* .menu a:hover {
     /* Change the menu color to darker green when hovering over a link*
     background-color: lightseagreen;

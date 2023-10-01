@@ -1,36 +1,55 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
   <title>Login</title>
   <script src="//unpkg.com/alpinejs" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="style.css">
   <script src="login.js"></script>
-
+  <script src="index.js"></script>
 </head>
 
 <body>
-  <div x-data="user">
-    <h1>Login</h1>
-  
-    <form action="/login" method="post" x-on:submit="login()">
-      <input type="text" name="username" placeholder="Username" x-model="username"
-        x-bind:class="{ 'invalid': username.length < 3 }">
-      <input type="password" name="password" placeholder="Password" x-model="password"
-        x-bind:class="{ 'invalid': password.length < 6 }">
-      <button type="submit"  x-on:click="login()" x-bind:disabled="username.length < 3 || password.length < 6">Login</button>
-    </form>
-  
-    <button type="submit" x-on:click="logout()" x-bind:disabled="!isLoggedIn()">Logout</button>
+  <div class="container">
+    <h1>LOGIN</h1>
+    <div x-data="loginDetails">
+      <div>
+        <div>
+          <strong>Username:</strong>
+          <input type="text" x-model="username">
+        </div>
+      </div>
+      Container for the "Login" button
+      <div x-show="!username">
+        <button x-on:click="login">Login</button>
+      </div>
+      Container for the "Logout" button
+      <div x-show="!username">
+        <button x-on:click="logout">Logout</button>
+      </div>
+    </div>
   </div>
+</body>
 
-  </body>
-  </head>
+</html>
 
-<!-- <div x-data="user">
-    <div class="user-buttons">
-      <button x-on:click="login" x-show="!loggedIn">Login</button>
-      <button x-on:click="logout" x-show="loggedIn">Logout</button>
+<!-- <body>
+  <div x-data="{ 
+     email: '',
+     password: '',
+     error: '' }">
+    <h1>Login</h1>
+    <div x-data="loginDetails()">
+      <form x-on:submit.prevent="login()">
+        <label for="email">Email:</label>
+        <input type="email" id="email" x-model="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" x-model="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p x-show="error" x-text="error"></p>
     </div>
   </div> -->
-
+<!-- </body>
+</head> --> -->

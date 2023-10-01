@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>book an appointment</title>
+    <title>Book a doctor's appointment</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,9 +48,8 @@
     </nav>
     <br>
     <div>
-    <div class="section">
-        <header class="content">Book a doctor's appointment below: <br>
-            <br>
+      <div class="section">
+                <header class="content">Book a doctor's appointment below: <br><br></header>
         <section class="directory ">
         <form @submit.prevent="bookAppointment" class="appointment-form">
             <div class="form-group">
@@ -126,5 +125,5 @@
         notificationsContent.appendChild(notification);
     </script>
 </body>
-
 </html
+
