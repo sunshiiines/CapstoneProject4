@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a doctor's appointment</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<<<<<<< HEAD
+
+<body x-data="appointmentBooking">>
+=======
 <body>
+>>>>>>> ad1da067f54de845e6ee85ce0cff8040c52c36d3
     <nav class="navbar-top">
         <div class="navbar-content">
             <ul>
@@ -47,6 +53,69 @@
         </div>
     </nav>
     <br>
+<<<<<<< HEAD
+    
+    <div class="content">
+        <h1>Book a Doctor's Appointment</h1>
+    
+        <form @submit.prevent="bookAppointment">
+            <div>
+                <label for="appointment-date">Select Date:</label>
+                <input type="date" id="appointment-date" x-model="selectedDate">
+            </div>
+            <br>
+            <div>
+                <label for="appointment-time">Select Time:</label>
+                <input type="time" id="appointment-time" x-model="selectedTime">
+            </div>
+            <br>
+            <div>
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" x-model="fullName">
+            </div>
+            <br>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" x-model="email">
+            </div>
+            <br>
+            <button type="submit">Book Appointment</button>
+        </form>
+    
+        <div x-show="appointmentBooked">
+            <p x-text="bookAppointment"></p>
+            <!-- <h2>Appointment Confirmed</h2>
+            <p>Date: {{ selectedDate }}</p>
+            <p>Time: {{ selectedTime }}</p>
+            <p>Name: {{ fullName }}</p>
+            <p>Email: {{ email }}</p> -->
+        </div>
+    </div>
+    
+    <!-- 
+        <h1 class="directory">Doctor Directory</h1>
+        <div class="doctors">
+            <section class="directory">
+                <h3>Dr One</h3>
+                <p>453 Doctor's street, Dr Town, Durban</p>
+                <p>031 245 7658</p>
+                <button>book appointment</button>
+            </section>
+            <section class="directory">
+                <h3>Dr Two</h3>
+                <p>453 Doctor Ave, Dr City, Johannesburg</p>
+                <p>011 245 7658</p>
+                <button>book appointment</button>
+            </section>
+            <section class="directory">
+                <h3>Dr Three</h3>
+                <p>453 DR lane, Doctorsburg, Cape Town</p>
+                <p>021 245 7658</p>
+                <button>book appointment</button>
+            </section>
+        </div>
+    </div> -->
+=======
     <div>
       <div class="section">
                 <header class="content">Book a doctor's appointment below: <br><br></header>
@@ -56,6 +125,7 @@
                 <label for="appointment-date">Select Date:</label>
                 <input type="date" id="appointment-date" x-model="selectedDate">
             </div>
+>>>>>>> ad1da067f54de845e6ee85ce0cff8040c52c36d3
 
             <div class="form-group">
                 <label for="appointment-time">Select Time:</label>
@@ -124,6 +194,24 @@
             `;
         notificationsContent.appendChild(notification);
     </script>
+
+    <script>
+    Alpine.data('appointmentBooking', () => ({
+        selectedDate: '',
+        selectedTime: '',
+        fullName: '',
+        email: '',
+        appointmentBooked: false,
+
+        bookAppointment() {
+            // Implement your appointment booking logic here
+            // For this example, we'll assume the appointment is booked successfully
+            // You can replace this with your own backend integration
+            this.appointmentBooked = true;
+        },
+    }));
+</script>
+ 
 </body>
 </html
 

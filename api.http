@@ -1,0 +1,22 @@
+GET http://localhost:3000/api/users
+content-type: application/json
+
+###
+GET http://localhost:3000/api/chatrooms/
+content-type: application/json
+
+###
+GET http://localhost:3000/api/chatroomMembers/
+content-type: application/json
+
+###
+GET http://localhost:3000/api/posts/
+content-type: application/json
+
+###
+POST http://localhost:3007/api/
+content-type: application/json
+
+{
+    
+}
