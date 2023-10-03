@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body x-data="postApp">
-    <nav class="navbar-top">
+    <!-- <nav class="navbar-top">
         <div class="navbar-content">
             <ul>
                 <li></li>
@@ -25,16 +29,16 @@
                 <li class="notifications-tab">
                     <i id="open-notifications" class="fa fa-bell fa-2x"></i>
                     <div class="notifications-content">
-                        <!-- Notifications will appear here -->
+                        <!-- Notifications will appear here --
                     </div>
                 </li>
                 <div class="menu-bar">
                     <div x-data="{ isOpen: false }">
-                        <!-- Toggle button for the menu -->
+                        <!-- Toggle button for the menu --
                         <i @click="isOpen = !isOpen" class="fa fa-bars fa-2x"></i>
-                        <!-- Menu container -->
+                        <!-- Menu container --
                         <span x-show="isOpen" class="menu">
-                            <!-- Menu items -->
+                            <!-- Menu items --
                             <ol>
                                 <i><a href="index.html">Home</a></li>
                                     <li><a href="languages.html">Languages</a></li>
@@ -47,8 +51,27 @@
                 <li></li>
             </ul>
         </div>
-    </nav>
-    <br>
+    </nav> -->
+
+    <section>
+
+    </section>
+    <script>
+        document.addEventListener("alpine:init", () => {
+
+            Alpine.data("postApp", () => {
+                return {
+                    createChart(){
+                        return axios.get(`http://localhost:3000/api/addChatroom/`)
+                    }
+
+                }
+            });
+        });
+       
+    </script>
+
+    <!-- <br>
 
     <div class="content">
 
@@ -111,7 +134,7 @@
         </div>
     </div> -->
 
-    <!--  -->
+    <!--  --
 
     <nav class="navbar-bottom">
         <div class="navbar-content">
@@ -146,7 +169,7 @@
             <p>You have a new message!</p>
             <span class="timestamp">2 minutes ago</span> `;
         notificationsContent.appendChild(notification);
-        // <!-- script script -->
+        // <!-- script script --
         Alpine.data('postApp', () => ({
             newPost: '',
             posts: [],
@@ -179,7 +202,7 @@
                 }
             },
         }));
-    </script>
+    </script> -->
 
 
 </body>

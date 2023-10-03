@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat App - Home</title>
   <link href="home.css" rel="stylesheet" type="text/css" />
-</head>
+</head> -->
 
 
   <!-- <h2>Welcome</h2>
@@ -189,7 +189,7 @@
   </script> -->
 
 
-<body x-data="chatApp()">
+<!-- <body x-data="chatApp()">
     <h2>Welcome</h2>
 
     <form @submit.prevent="createChatroom">
@@ -266,8 +266,132 @@
 
         const app = chatApp();
         app.fetchChatrooms();
-    </script>
+    </script> -->
   
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Chat App - Home</title>
+      <link href="home.css" rel="stylesheet" type="text/css" />
+    
+    </head>
+    
+    <body>
+      <h2>Welcome</h2>
+    
+      <form id="create-chatroom-form">
+        <input type="text" id="chatroom-name" placeholder="Chatroom Name" required>
+        <button type="submit">Create Chatroom</button>
+      </form>
+      <div id="chatrooms"></div>
+      <button id="logout">Logout</button>
+    
+      <script>
+        const createChatroomForm = document.getElementById('create-chatroom-form');
+        const chatroomsDiv = document.getElementById('chatrooms');
+        const logoutButton = document.getElementById('logout');
+    
+        const userId = sessionStorage.getItem("userId");
+        const username = sessionStorage.getItem('username');
+    
+    
+        // async function fetchUser(username) {
+        //   try {
+        //       const response = await fetch(`http://localhost:3000/api/chatroom/${username}`);
+        //       if (response.ok) {
+        //           const user = await response.json();
+        //           userId = user.id;
+        //       }
+        //   } catch (error) {
+        //       console.error('Error fetching user:', error);
+        //   }
+        // }
+    
+        // fetchUser(username);
+    
+        createChatroomForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const name = document.getElementById('chatroom-name').value;
+    
+          try {
+            const response = await fetch('http://localhost:3000/api/chatrooms', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ name, userId })
+            });
+            console.log(response);
+    
+            if (response.ok) {
+              const data = await response.json();
+              displayChatroom(data.chatroom);
+            }
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        });
+    
+        logoutButton.addEventListener('click', () => {
+          sessionStorage.removeItem('username');
+          window.location.href = 'login.html';
+        });
+    
+        async function fetchChatrooms() {
+          try {
+            const response = await fetch('http://localhost:3000/api/getChatrooms');
+    
+            if (response.ok) {
+              const data = await response.json();
+              data.chatrooms.forEach(chatroom => {
+                displayChatroom(chatroom);
+              });
+            }
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        }
+    
+        function displayChatroom(chatroom) {
+          const chatroomDiv = document.createElement('div');
+          chatroomDiv.className = 'chatroom';
+    
+          const chatroomName = document.createElement('span');
+          chatroomName.textContent = chatroom.name;
+          chatroomDiv.appendChild(chatroomName);
+    
+          chatroomName.addEventListener('click', () => {
+            window.location.href = `chat.html?id=${chatroom.id}&name=${chatroom.name}`;
+          });
+    
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.onclick = async () => {
+            try {
+              const response = await fetch(`http://localhost:3000/api/chatrooms/${chatroom.id}`, {
+                method: 'DELETE'
+              });
+    
+              if (response.ok) {
+                chatroomsDiv.removeChild(chatroomDiv);
+              }
+            } catch (error) {
+              console.error('Error:', error);
+            }
+          };
+          chatroomDiv.appendChild(deleteButton);
+          chatroomsDiv.appendChild(chatroomDiv);
+        }
+    
+        fetchChatrooms();
+      </script>
+    </body>
+    
+    </html>
+
 </body>
 
 </html>

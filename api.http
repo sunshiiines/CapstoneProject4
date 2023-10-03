@@ -2,21 +2,144 @@ GET http://localhost:3000/api/users
 content-type: application/json
 
 ###
+POST http://localhost:3000/api/addUser/
+content-type: application/json
+
+{
+    "name": "sunshine",
+    "email": "sunshine@example.com",
+    "password": "password1",
+    "status": "offline"
+}
+
+###
+POST http://localhost:3000/api/deleteUser
+content-type: application/json
+
+{
+   "id": 7
+}
+
+###
 GET http://localhost:3000/api/chatrooms/
 content-type: application/json
+
+###
+POST http://localhost:3000/api/addChatroom/
+content-type: application/json
+
+{
+    "name": "Things and Stuff",
+    "create_by": 1
+}
+
+###
+PUT http://localhost:3000/api/updateChatroom/:id/
+content-type: application/json
+
+{
+    "id": 4,
+    "name": "hypertension supers"
+    
+}
+
+###
+POST http://localhost:3000/api/deleteChatroom/
+content-type: application/json
+
+{
+    "id": 2
+    
+}
 
 ###
 GET http://localhost:3000/api/chatroomMembers/
 content-type: application/json
 
 ###
+POST http://localhost:3000/api/addChatroomMember/
+content-type: application/json
+
+{
+    "chatroom_id": 2,
+    "user_id": 1,
+    "joined_at": "2023-09-28 14:35:00"
+}
+
+###
+POST  http://localhost:3000/api/deleteChatroomMember/:chatroomId/:userId/
+content-type: application/json
+
+{
+    "name": "hypertension patients"
+    
+}
+
+###
 GET http://localhost:3000/api/posts/
 content-type: application/json
 
 ###
-POST http://localhost:3007/api/
+POST http://localhost:3000/api/addPost/
 content-type: application/json
 
 {
+    "post_info": "Hello, I need advice...",
+    "sender_id": 5,
+    "chatroom_id": 2,
+    "created_at": "2023-09-28 14:35:00"
+}
+
+###
+PUT http://localhost:3000/api/updatePost/:id/
+content-type: application/json
+
+{
+    "id": 4,
+    "post_info": "Hi, I need advice, i am a 35 years old male"
+    
+}
+
+###
+POST  http://localhost:3000/api/deletePost/
+content-type: application/json
+
+{
+    "id": 3
+    
+}
+
+###
+GET http://localhost:3000/api/tracking/ 
+
+###
+POST http://localhost:3000/api/addTracking
+content-type: application/json
+
+{
+  "user_id": 1,
+  "systolic_bp": 100,
+  "diastolic_bp": 80,
+  "pulse": 70 
+}
+
+###
+PUT http://localhost:3000/api/updatePost/:id/
+content-type: application/json
+
+{
+  "id": 4,
+  "user_id": 1,
+  "systolic_bp": 110,
+  "diastolic_bp": 90,
+  "pulse": 70 
+}
+
+###
+DELETE  http://localhost:3000/api/deletePost/:id/
+content-type: application/json
+
+{
+    "id": 4
     
 }
