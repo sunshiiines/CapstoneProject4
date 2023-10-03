@@ -255,12 +255,27 @@ button {
     color: white;
     display: list-item;
 }
+<<<<<<< HEAD
+
+.success-message {
+    color: green;
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
+=======
 .posts {
     background-color: rgba(255, 228, 196, 0.513);
     color: #02004b;
     border: #a6a4a4 solid 1px;
     border-radius: 5px;
 }
+>>>>>>> origin
 /* .menu a:hover {
     /* Change the menu color to darker green when hovering over a link*
     background-color: lightseagreen;

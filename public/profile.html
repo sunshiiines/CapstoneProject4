@@ -13,14 +13,13 @@
 </head>
 
 <body>
-    <section>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <i class="fa fa-home fa-2x"></i>
-                    <br>Home
-                </a>
-</section>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="notifications-tab"><i class="fa fa-home fa-2x"></i>Home</a></li>
+            </ul>
+        </nav>
+    </header>
     <Section>
         <strong><h1 style="align-items: center;">Create a profile below:</h1></strong>
     <section x-data="{ showModal: false, profile: {} }">
@@ -55,19 +54,13 @@
                                 <input type="text" class="form-control" id="country" v-model="profile.Contact Information" required>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="healthGoal" class="form-label">Health Goal:</label>
-                                <input type="text" class="form-control" id="healthGoal" v-model="profile.healthGoal"
-                                    required>
-                            </div>
-
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
 
                         <!-- Links to Educational Articles -->
                         <h5 class="mt-4">Links to Educational Articles:</h5>
                         <ul>
-                            <li><a href="#">Nutrition Articles</a></li>
+                            <li><a href="https://youtube.com/watch?v=3tm7ikZuRmE">Nutrition Articles</a></li>
                             <li><a href="#">Educational Articles</a></li>
                         </ul>
                     </div>
