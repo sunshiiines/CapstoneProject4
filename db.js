@@ -23,9 +23,9 @@ export async function addUser(name, email, password, status) {
     const sql = 'insert into users (name, email, password, status) values (?, ?, ?, ?)'
     await db.run(sql, [name, email, password, status]);
 }
-export async function deleteUser(name) {
-    const sql = 'delete from users where name = ?';
-    await db.run(sql, [name]);
+export async function deleteUser(id) {
+    const sql = 'delete from users where id = ?';
+    await db.run(sql, [id]);
 }
 
 
@@ -42,32 +42,32 @@ export async function addChatroom(name, created_by) {
     const sql = 'insert into chatrooms (name, created_by) values (?, ?)'
     await db.run(sql, [name, created_by]);
 }
-export async function deleteChatroom(name) {
-    const sql = 'delete from chatrooms where name = ?';
-    await db.run(sql, [name]);
+export async function deleteChatroom(id) {
+    const sql = 'delete from chatrooms where id = ?';
+    await db.run(sql, [id]);
 }
-export async function updateChatroom(newName, chatroomId) {
+export async function updateChatroom(name, id) {
     const sql = 'update chatrooms set name = ? where id = ?';
-    await db.run(sql, [newName, chatroomId]);
+    await db.run(sql, [name, id]);
 }
 
 
 // chatrooms_members
 
 export async function getChatroomMembers() {
-    const result5 = await db.all('select * from chatrooms')
+    const result5 = await db.all('select * from chatroom_members')
     return result5;
 }
 const result5 = await getChatroomMembers()
 //console.log(result5)
 
-export async function addChatroomMember(chatroomId, userId, joinedAt){
+export async function addChatroomMember(chatroom_id, user_id, joined_at){
 const sql = 'insert into chatroom_members (chatroom_id, user_id, joined_at) values (?, ?, ?)';
-await db.run(sql, [chatroomId, userId, joinedAt]);
+await db.run(sql, [chatroom_id, user_id, joined_at]);
 }
-export async function deleteChatroomMember(chatroomId, userId) {
-    const sql = 'delete from chatroom_members where chatroom_id = ? and user_id = ?';;
-    await db.run(sql, [chatroomId, userId]);
+export async function deleteChatroomMember(chatroom_id, user_id) {
+    const sql = 'delete from chatroom_members where chatroom_id = ? and user_id = ?';
+    await db.run(sql, [chatroom_id, user_id]);
 }
 
 
@@ -84,16 +84,16 @@ export async function addPost(post_info, sender_id, chatroom_id, created_at) {
     const sql = 'insert into posts (post_info, sender_id, chatroom_id, created_at) values (?, ?, ?, ?)'
     await db.run(sql, [post_info, sender_id, chatroom_id, created_at]);
 }
-export async function deletePost(postId) {
+export async function deletePost(id) {
     const sql = 'delete from posts where id = ?';
-    await db.run(sql, [postId]);
+    await db.run(sql, [id]);
 }
-export async function updatePost(post_info, postId){
+export async function updatePost(post_info, id){
     const sql = 'update posts set post_info = ? where id = ?';
-    await db.run(sql, [post_info, postId]);
+    await db.run(sql, [post_info, id]);
 }
 
-
+  
 //tracking
 
 export async function getTracking() {
@@ -107,13 +107,13 @@ export async function addTracking(user_id, systolic_bp, diastolic_bp, pulse) {
     const sql = 'insert into tracking (user_id, systolic_bp, diastolic_bp, pulse) values (?, ?, ?, ?);'
     await db.run(sql, [user_id, systolic_bp, diastolic_bp, pulse]);
 }
-export async function deleteTracking(trackId) {
+export async function deleteTracking(id) {
     const sql = 'delete from tracking where id = ?';
-    await db.run(sql, [trackId]);
+    await db.run(sql, [id]);
 }
-export async function updateTracking(systolicBP, diastolicBP, pulse) {
-    const sql = 'update chatrooms set systolic_bp = ?, diastolic_bp =?, pulse = ? where id = ?';
-    await db.run(sql, [systolicBP, diastolicBP, pulse]);
+export async function updateTracking(systolic_bp, diastolic_bp, pulse, id) {
+    const sql = 'update tracking set systolic_bp = ?, diastolic_bp =?, pulse = ? where id = ?';
+    await db.run(sql, [systolic_bp, diastolic_bp, pulse, id]);
 }
 
 console.log('====================')

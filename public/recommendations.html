@@ -7,20 +7,39 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-            <style>
-                body {
-                    background-image:("/images/background.jpeg");
-                    background-size: cover; /* Cover the entire viewport */
-                    background-repeat: no-repeat; 
-                }
-            </style>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
+
+<style>
+    .navbar-nav .nav-link .fa {
+        color: #03a4ff;
+    }
+</style>
+
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index" class="notifications-tab"><i class="fa fa-home fa-2x"></i>Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br>
     <div class="container mt-5">
         <h1 class="text-center">Hypertension Lifestyle Recommendations</h1>
 
         <div id="recommendations" class="mt-4">
             <!-- Recommendations table will be displayed here -->
+        </div>
+
+        <!-- Embed the video here -->
+        <div class="mt-4">
+            <h2 class="text-center">Nutrition and Exercise Videos</h2>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://youtu.be/3tm7ikZuRmE?t=109" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 
@@ -49,7 +68,7 @@
                 "Reduce stress."
             ]
         };
-
+        
         // Get the recommendations container
         const recommendationsContainer = document.getElementById("recommendations");
 
@@ -74,17 +93,31 @@
             recommendationsContainer.innerHTML = "<p class='text-center'>No recommendations available.</p>";
         }
     </script>
-<nav class="navbar-bottom">
-    <div class="navbar-content">
-        <ul>
-            <li></li>
-            <a href="bptracking.html"><i class="fa fa-heartbeat fa-2x"></i>BP tracking</a>
-            <a href="appointment.html"><i class="fa fa-medkit fa-2x"></i>Appointment</a>
-            <a href="community.html"><i class="fa fa-comments-o fa-2x"></i>Community support</a>
-            <a href="recommendations.html"><i class="fa fa-stethoscope fa-2x"></i>Recommendations</a>
-            <li></li>
-        </ul>
-    </div>
-</nav>
+    <br>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center mx-3">
+        <div class="navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/bp-tracking"><i class="fa fa-heartbeat fa-2x"></i> bp-tracking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/appointment"><i class="fa fa-medkit fa-2x"></i> Appointment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/community-support"><i class="fa fa-comments-o fa-2x"></i> Community
+                        support</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/recommendations"><i class="fa fa-stethoscope fa-2x"></i>
+                        Recommendations</a>
+                </li>
+                <li class="nav-item"></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
 </body>
 </html>

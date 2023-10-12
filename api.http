@@ -24,7 +24,7 @@ content-type: application/json
 GET http://localhost:3000/api/chatrooms/
 content-type: application/json
 
-###
+### 
 POST http://localhost:3000/api/addChatroom/
 content-type: application/json
 
@@ -34,13 +34,12 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/updateChatroom/:id/
+POST http://localhost:3000/api/updateChatroom/
 content-type: application/json
 
 {
-    "id": 4,
-    "name": "hypertension supers"
-    
+    "name": "easy and effective exercises",
+    "id": 2
 }
 
 ###
@@ -62,16 +61,17 @@ content-type: application/json
 
 {
     "chatroom_id": 2,
-    "user_id": 1,
+    "user_id": 3,
     "joined_at": "2023-09-28 14:35:00"
 }
 
 ###
-POST  http://localhost:3000/api/deleteChatroomMember/:chatroomId/:userId/
+POST  http://localhost:3000/api/deleteChatroomMember/
 content-type: application/json
 
 {
-    "name": "hypertension patients"
+    "chatroom_id": 2,
+    "user_id": 3
     
 }
 
@@ -91,13 +91,12 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/updatePost/:id/
+POST http://localhost:3000/api/updatePost/
 content-type: application/json
 
 {
-    "id": 4,
-    "post_info": "Hi, I need advice, i am a 35 years old male"
-    
+    "post_info": "Hi, I need advice, i am a 35 years old male",
+    "id": 6
 }
 
 ###
@@ -105,7 +104,7 @@ POST  http://localhost:3000/api/deletePost/
 content-type: application/json
 
 {
-    "id": 3
+    "id": 5
     
 }
 
@@ -117,29 +116,28 @@ POST http://localhost:3000/api/addTracking
 content-type: application/json
 
 {
-  "user_id": 1,
-  "systolic_bp": 100,
-  "diastolic_bp": 80,
-  "pulse": 70 
+  "user_id": 3,
+  "systolic_bp": 80,
+  "diastolic_bp": 50,
+  "pulse": 69 
 }
 
 ###
-PUT http://localhost:3000/api/updatePost/:id/
+POST http://localhost:3000/api/updateTracking/
 content-type: application/json
 
 {
-  "id": 4,
-  "user_id": 1,
   "systolic_bp": 110,
   "diastolic_bp": 90,
-  "pulse": 70 
+  "pulse": 70,
+  "id": 6
 }
 
 ###
-DELETE  http://localhost:3000/api/deletePost/:id/
+POST  http://localhost:3000/api/deleteTracking/
 content-type: application/json
 
 {
-    "id": 4
+    "id": 5
     
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import axios from 'axios';
 
 // Create an Alpine data object.
@@ -48,7 +47,6 @@ const user = Alpine.data('user', () => ({
     }
   }
 }));
-=======
 document.addEventListener("alpine:init", () => {
   Alpine.data("loginDetails", () => {
     return {
@@ -75,4 +73,3 @@ document.addEventListener("alpine:init", () => {
     };
   });
 });
->>>>>>> 1d237978e3c522fe871e4bf4777200811d21f0e3

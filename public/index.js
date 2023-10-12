@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 app.listen(PORT, function () {
     console.log('App starting on port', PORT);
   });
@@ -13,7 +12,6 @@ app.listen(PORT, function () {
           selectedDoctor: null,
       }));
   
-=======
 // const express = require('express');
 // const bcrypt = require('bcrypt');
 // const jwt = require('jsonwebtoken');
@@ -63,21 +61,6 @@ app.listen(PORT, function () {
 // });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // //  Alpine.data('doctorsList', () => ({
 // //         doctors: [
 // //             { name: 'Dr One', address: '453 Doctor\'s street, Dr Town, Durban', phone: '031 245 7658' },
@@ -88,4 +71,3 @@ app.listen(PORT, function () {
 // //         appointmentModal: false,
 // //         selectedDoctor: null,
 // //     }));
->>>>>>> 1d237978e3c522fe871e4bf4777200811d21f0e3
