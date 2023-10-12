@@ -1,75 +1,46 @@
-import axios from 'axios';
+ document.addEventListener("alpine:init", () => {
+        Alpine.data("loginData", () => {
+            return {
+                email: '',
+                password: '',
+                rememberMe: false, // Add a checkbox for "Remember Me"
+                
+                // Initialize the email and password from local storage
+                init() {
+                    const storedEmail = localStorage.getItem('storedEmail');
+                    const storedPassword = localStorage.getItem('storedPassword');
+                    if (storedEmail && storedPassword) {
+                        this.email = storedEmail;
+                        this.password = storedPassword;
+                        this.rememberMe = true; // Check the "Remember Me" checkbox
+                    }
+                },
 
-// Create an Alpine data object.
-const user = Alpine.data('user', () => ({
-  username: '',
-  password: '',
-  isLoggedIn: false,
+                login() {
+                    // Check if "Remember Me" is selected and store email and password
+                    if (this.rememberMe) {
+                        localStorage.setItem('storedEmail', this.email);
+                        localStorage.setItem('storedPassword', this.password);
+                    } else {
+                        // Clear stored email and password
+                        localStorage.removeItem('storedEmail');
+                        localStorage.removeItem('storedPassword');
+                    }
 
-  // Login function.
-  login() {
-    // Get the username and password from the form.
-    const username = this.username;
-    const password = this.password;
-
-    // Check if the username and password are too short.
-    if (username.length < 3 || password.length < 6) {
-      alert('Username and password must be at least 3 characters long.');
-      return;
-    }
-
-    // Send a request to the server to log in.
-    axios.post('/login', { username, password })
-      .then(response => {
-        // If the login is successful, set the isLoggedIn property to true.
-        this.isLoggedIn = true;
-      })
-      .catch(error => {
-        // Handle the error.
-        alert('Login failed.');
-      });
-  },
-
-  // Logout function.
-  logout() {
-    // Confirm with the user before logging out.
-    if (confirm('Do you want to logout?')) {
-      // Send a request to the server to log out.
-      axios.post('/logout')
-        .then(response => {
-          // If the logout is successful, set the isLoggedIn property to false.
-          this.isLoggedIn = false;
-        })
-        .catch(error => {
-          // Handle the error.
-          alert('Logout failed.');
+                    axios.post('/login', {
+                        email: this.email,
+                        password: this.password
+                    })
+                    .then(response => {
+                        // Handle the response, e.g., redirect to a new page
+                        console.log('Login successful', response.data);
+                    })
+                    .catch(error => {
+                        // Handle login errors, e.g., display an error message
+                        console.error('Login failed', error);
+                    });
+                }
+            };
         });
-    }
-  }
-}));
-document.addEventListener("alpine:init", () => {
-  Alpine.data("loginDetails", () => {
-    return {
-      username: "",
-      failureMessage: "",
+    });
 
-      login() {
-        if (this.username.length > 2) {
-          localStorage.setItem("username", this.username);
-          // Call the 'createlogin' function to handle the login session if needed
-        } else {
-          alert("Username is too short");
-        }
-      },
-
-      logout() {
-        if (confirm("Do you want to logout")) {
-          this.username = "";
-          localStorage.removeItem("username");
-          localStorage.removeItem("password");
-          // Handle the logout process as needed
-        }
-      },
-    };
-  });
-});

@@ -15,33 +15,25 @@ def hypertension_classification(pre_output):
     else:
         return 'Unknown'
 
-@app.post('/api/predict')
+@app.route('/api/predict', methods=['POST'])
 def predict():
     # Load Saved Extra Tree model
-    with open('model/DTC (1).pkl', 'rb') as model_file:
+    with open('my_flask_app\model\DTC.pkl', 'rb') as model_file:
         dst = pickle.load(model_file)
-        
     # Retrieve input data from the POST request
-    input_1 = float(request.form.get('input_1'))
-    input_2 = float(request.form.get('input_2'))
-    input_3 = float(request.form.get('input_3'))
-    input_4 = float(request.form.get('input_4'))
-    input_5 = float(request.form.get('input_5'))
-    input_6 = float(request.form.get('input_6'))
-    input_7 = float(request.form.get('input_7'))
-    input_8 = float(request.form.get('input_8'))
-    input_9 = float(request.form.get('input_9'))
-    input_10 = float(request.form.get('input_10'))
+    data = request.get_json()
+    input_data  = [float(p_data) for p_data in data.values()]
+
 
     # Prepare the input data as a list of lists
-    val_input = [[input_1, input_2, input_3, input_4, input_5, input_6, input_7, input_8, input_9, input_10]]
     # val_input = [[0.23,54,33,1,0,26106,25333,205.0,3,0]]
        
     # Make predictions using the loaded model
-    prediction = dst.predict(val_input)
+    prediction = dst.predict([input_data])
     pred_class = hypertension_classification(prediction[0])
    
     return jsonify({'prediction': pred_class})  # Return the prediction as JSON
 
 if __name__ == '__main__':
     app.run(debug=True)  # Run the Flask app in debug mode
+

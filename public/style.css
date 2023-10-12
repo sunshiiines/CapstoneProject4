@@ -1,5 +1,5 @@
 body {
-    background-image: url("/images/background.jpeg");
+    background-image: url("images/background.jpeg");
     background-size: cover; }
     /*font-family: sans-serif;
     height: 100vh;

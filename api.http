@@ -83,6 +83,11 @@ content-type: application/json
 POST http://localhost:3000/api/addPost/
 content-type: application/json
 
+
+###
+POST http://127.0.0.1:5000/api/predict
+Content-Type: application/json
+
 {
     "post_info": "Hello, I need advice...",
     "sender_id": 5,
@@ -138,6 +143,23 @@ POST  http://localhost:3000/api/deleteTracking/
 content-type: application/json
 
 {
-    "id": 5
+     "id": 5
+}
+
+###
+POST http://127.0.0.1:5000/api/predict
+Content-Type: application/json
+
+{
     
+    "input_1": 4,
+    "input_2": 23,
+    "input_3": 33,
+    "input_4": 18,
+    "input_5": 7,
+    "input_6": 8,
+    "input_7": 0,
+    "input_8": 5,
+    "input_9": 40,
+    "input_10": 1
 }

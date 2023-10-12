@@ -4,38 +4,32 @@
 <head>
   <title>Login</title>
   <link rel="stylesheet" href="style.css">
+  <!-- <script src="//unpkg.com/alpinejs" defer></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <style>
+ 
+ <style>
     body {
-      background-image: url("/images/background.jpeg");
-      background-size: cover;
-      margin-top: 0;
-      margin-left: 0;
-      height: 900px;
-      text-align: center;
-      width: 60%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    a {
-      color: blue;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0; 
+        }
+        a {
+          color: blue;
+        }
+        h1 {
+          text-align: center;
+        }
     .login {
       backdrop-filter: blur(10px);
       background-color: rgba(45, 139, 253, 0.193);
       width: min(600px, 90vw);
       border: 1px solid #03a4ff;
-      text-align: left;
+      text-align: left; 
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
@@ -45,28 +39,20 @@
   </style>
 </head>
 
-<body>
+<body x-data="loginData()">
   <div class="container w-50 login">
-    <h1 class="h1 m-2 ">Login</h1>
+      <h1 class="h1 m-2">Login</h1>
 
-    <form action="/login" method="post" class="container">
-      <label for="email" class="form-label">Email:</label>
-      <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-      <label for="password" class="form-label">Password:</label>
-      <input type="password" class="form-control" name="password" placeholder="Password" required>
-      <button type="submit" class="btn btn-primary mt-2">Login</button>
-    </form>
+      <form @submit.prevent="login" class="container">
+          <label for="email" class="form-label">Email:</label>
+          <input x-model="email" type="email" class="form-control" placeholder="Email Address" required>
+          <label for="password" class="form-label">Password:</label>
+          <input x-model="password" type="password" class="form-control" placeholder="Password" required>
+          <button type="submit" class="btn btn-primary mt-2">Login</button>
+      </form>
 
-    <p class="text-black m-2 mt-3">Don't have an account? <a class="link-info text-blue" href="/signup">Create One!</a>
-    </p>
+      <p class="text-black m-2 mt-3">Don't have an account? <a class="link-info text-blue" href="/signup">Create One!</a></p>
   </div>
 
 </body>
-</head>
-
-<!-- <div x-data="user">
-    <div class="user-buttons">
-      <button x-on:click="login" x-show="!loggedIn">Login</button>
-      <button x-on:click="logout" x-show="loggedIn">Logout</button>
-    </div>
-  </div> -->
+</html>
