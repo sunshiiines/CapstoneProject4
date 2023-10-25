@@ -14,6 +14,10 @@ document.addEventListener('alpine:init', () => {
         },
         prediction: null,
 
+        init() {
+            console.log('init');
+        },
+
         predict() {
             console.log('Sending request with input data:', this.inputData);
             // Make a POST request to your Flask app
