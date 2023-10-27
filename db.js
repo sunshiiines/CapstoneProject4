@@ -28,6 +28,12 @@ export async function deleteUser(id) {
     await db.run(sql, [id]);
 }
 
+// Login function
+export async function login(email, password) {
+    const sql = 'select * from users where email = ? and password = ?'
+    const user = await db.run(sql, [email, password]);
+    return user;
+  }
 
 // chatrooms
 
@@ -133,6 +139,7 @@ console.log('====================')
 //await addTracking(1, 150, 90, 100);
 //await updateTracking(110, 80, 90, 3);
 //await deleteTracking(3);
+
 
 const result2 = await getUsers()
 console.log(result2);

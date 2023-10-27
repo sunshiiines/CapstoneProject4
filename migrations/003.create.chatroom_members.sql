@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS chatroom_members (
     chatroom_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER,
     joined_at DATETIME NOT NULL,
     PRIMARY KEY (chatroom_id, user_id),
     FOREIGN KEY (chatroom_id) REFERENCES chatrooms(id),

@@ -267,6 +267,144 @@
         const app = chatApp();
         app.fetchChatrooms();
     </script> -->
+    // const chatroomId = new URLSearchParams(window.location.search).get('id');
+
+    // const chatroomName = new URLSearchParams(window.location.search).get('name');
+    // document.getElementById('chatroom-name').innerText = chatroomName || 'Chatroom';
+
+    // const messagesDiv = document.getElementById('messages');
+    // const messageInput = document.getElementById('message-input');
+    // const sendMessageButton = document.getElementById('send-message');
+
+
+    // const userId = sessionStorage.getItem("userId");
+    // const username = sessionStorage.getItem('username');
+
+    // async function fetchMessages() {
+    //     try {
+    //         const response = await axios.get(`http://localhost:3000/api/chatrooms/${chatroomId}/getMessages`);
+
+
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             messagesDiv.innerHTML = '';
+    //             data.messages.forEach(message => {
+    //                 displayMessage(message);
+    //             });
+    //             messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    //         }
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // }
+
+    // fetchMessages();
+    // setInterval(fetchMessages, 5000); // Update messages every 5 seconds
+
+
+    // // Send a new message
+    // sendMessageButton.addEventListener('click', async () => {
+    //     const post_info = messageInput.value;
+
+    //     if (!post_info) return; // Validate the message content
+
+    //     try {
+    //         const response = await axios.post(`http://localhost:3000/api/addPost`, {
+    //             post_info: post_info,
+    //             sender_id: userId,
+    //             chatroom_id: chatroomId,
+    //             created_at: new Date().toISOString()
+    //         });
+
+    //         if (response.data.status === 'success') {
+    //             // Message added successfully, you can handle it here
+    //             messageInput.value = ''; // Clear the input field
+    //         }
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // });
+
+    // // Function to fetch and display posts
+    // function getPosts() {
+    //     axios.get('http://localhost:3000/api/posts') // Replace with your actual endpoint
+    //         .then(response => {
+    //             if (response.status === 200) {
+    //                 const posts = response.data.posts; // Assuming your API returns an array of posts
+
+    //                 // Iterate through the posts and display them
+    //                 const postList = document.getElementById('postList'); // Assuming you have a div with this ID to display posts
+
+    //                 postList.innerHTML = ''; // Clear the previous posts
+
+    //                 posts.forEach(post => {
+    //                     const postDiv = document.createElement('div');
+    //                     postDiv.textContent = post.post_info; // Assuming your post object has a "post_info" property
+    //                     postList.appendChild(postDiv);
+    //                 });
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //         });
+    // }
+
+    // // Call the getPosts function to fetch and display posts
+    // getPosts();
+
+    // // sendMessageButton.addEventListener('click', async () => {
+    // //     const message_info = messageInput.value;
+    // //     // if (!message) return;
+
+    // //     try {
+
+    // //         const response = await axios.post(`http://localhost:3000/api/chatrooms/${chatroomId}/createMessage`, {
+    // //             post_info: message_info,
+    // //             sender_id: userId,
+    // //             chatroom_id: chatroomId
+    // //         });
+
+
+    // //         if (response.ok) {
+    // //             const data = await response.json();
+    // //             displayMessage(data.message);
+    // //             messageInput.value = '';
+    // //         }
+
+    // //     } catch (error) {
+    // //         console.error('Error:', error);
+    // //     }
+    // // });
+
+    // function displayMessage(message) {
+    //     const messageDiv = document.createElement('div');
+    //     messageDiv.textContent = `${message.sender_id}: ${message.post_info}`;
+    //     messagesDiv.appendChild(messageDiv);
+    //     messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    // }
+
+        <!-- <div class="container content community">
+      <h1 class="card-header mt-4 text-center">Community support</h1>
+
+        <section class="directory">
+            <div x-data="{ posts: [], postTitle: '', postContent: '' }">
+                <h2>Create a Post</h2>
+                <form
+                    @submit.prevent="posts.push({ title: postTitle, content: postContent }); postTitle = ''; postContent = '';">
+                    <div class="form-group">
+                        <label for="postTitle">Title:</label>
+                        <input type="text" id="postTitle" class="form-control" placeholder="Title" x-model="postTitle"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Write Post:</label>
+                        <textarea id="postContent" class="form-control" placeholder="Write post" x-model="postContent"
+                            rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Post</button>
+                </form>
+            </div>
+        </section> -->
   
     <!DOCTYPE html>
     <html lang="en">

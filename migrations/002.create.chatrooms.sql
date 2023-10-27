@@ -1,13 +1,15 @@
 CREATE TABLE IF NOT EXISTS chatrooms (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE,
-    created_by INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    created_by INTEGER,
     FOREIGN KEY (created_by) REFERENCES users(id)
 );
 
 INSERT INTO chatrooms (name, created_by)
-VALUES ('Easy effective exercises', 1);
+VALUES ('Hypertensive', 2);
  
 SELECT * from chatrooms;
+
+DELETE from chatrooms where id = 6;
 
 DROP TABLE chatrooms;
