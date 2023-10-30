@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Pressure Tracking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="trackbp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <style>
+        .tracking {
+            backdrop-filter: blur(10px);
+            background-color: rgba(45, 253, 218, 0.222);
+            width: min(600px, 90vw);
+            height: 600px;
+            border: 1px solid #03a4ff;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: auto;
+            border-radius: 5px;
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(45, 253, 218, 0.222);
+        }
+
+        .navbar-nav .nav-link .fa {
+            color: #03a4ff;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        #myHeader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #e6eef3;
+            z-index: 1000;
+        }
+
+        .content {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body x-data="app()">
+    <div class="container bg-light">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-5 border-bottom" id="myHeader">
+            <a href="home.html"
+                class="d-flex align-items-center mb-5 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <i class="fa fa-home fa-2x"></i>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="tracking.html">BP Tracking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bmi.html">Body Mass Index</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="community.html">Community Support</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                        <li><a class="dropdown-item mr-3" href="signup.html">Profile</a></li>
+                        <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                        <!-- <li><a class="dropdown-item" href="languages.html">Languages</a></li> -->
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                    </ul>
+            </ul>
+        </header>
+    </div>
+    <br>
+    <section class="content tracking" x-init="loadData">
+        <div class="container text-center">
+            <h1>Hypertension Tracker</h1>
+
+            <div class="mt-3">
+                <form @submit.prevent="addReading">
+                    <div class="form-group">
+                        <label for="systolic">Systolic:</label>
+                        <input type="number" class="form-control" id="systolic" x-model.number="systolic">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diastolic">Diastolic:</label>
+                        <input type="number" class="form-control" id="diastolic" x-model.number="diastolic">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pulse">Pulse:</label>
+                        <input type="number" class="form-control" id="pulse" x-model.number="pulse">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Add Reading</button>
+                </form>
+            </div>
+
+            <div class="mt-5">
+                <canvas x-show="chartData" x-ref="chart" id="hypertension-chart" width="400" height="200"></canvas>
+            </div>
+            <br>
+        </div>
+    </section>
+
+    <script>
+        // function app() {
+        //     return {
+        //         systolic: null,
+        //         diastolic: null,
+        //         pulse: null,
+        //         chartData: false,
+        //         labels: [],
+        //         systolicData: [],
+        //         diastolicData: [],
+        //         pulseData: [],
+
+        //         // Function to load existing data
+        //         loadData() {
+        //             // Send a GET request to fetch existing data
+        //             axios.get('http://localhost:3000/api/tracking')
+        //                 .then((response) => {
+        //                     if (Array.isArray(response.data)) {
+        //                         response.data.forEach((data, index) => {
+        //                             const date = `Day ${index + 1}`;
+        //                             this.labels.push(date);
+        //                             this.systolicData.push(data.systolic);
+        //                             this.diastolicData.push(data.diastolic);
+        //                             this.pulseData.push(data.pulse);
+        //                         });
+        //                         this.chartData = true;
+        //                         this.updateChart();
+        //                     }
+        //                 })
+        //                 .catch((error) => {
+        //                     console.error(error);
+        //                 });
+        //         },
+
+        //         // Function to add a reading
+        //         addReading() {
+        //             if (this.systolic === null || this.diastolic === null || this.pulse === null) {
+        //                 alert("Please fill in all fields.");
+        //                 return;
+        //             }
+
+        //             const date = `Day ${this.labels.length + 1}`;
+
+        //             // Add data to arrays for the chart
+        //             this.labels.push(date);
+        //             this.systolicData.push(this.systolic);
+        //             this.diastolicData.push(this.diastolic);
+        //             this.pulseData.push(this.pulse);
+
+        //             // Update chart
+        //             this.chartData = true;
+        //             this.updateChart();
+
+        //             // Send data to the server using Axios
+        //             axios.post('http://localhost:3000/api/tracking', {
+        //                 user_id: 1, 
+        //                 systolic: this.systolic,
+        //                 diastolic: this.diastolic,
+        //                 pulse: this.pulse,
+        //             })
+        //                 .then((response) => {
+        //                     if (response.data.success) {
+        //                         this.systolic = null;
+        //                         this.diastolic = null;
+        //                         this.pulse = null;
+        //                     }
+        //                 })
+        //                 .catch((error) => {
+        //                     console.error(error);
+        //                 });
+        //         },
+
+        //         // Function to update the chart
+        //         updateChart() {
+        //             const chart = this.$refs.chart; // Reference to the chart canvas
+        //             if (chart) {
+        //                 new Chart(chart, {
+        //                     type: 'line',
+        //                     data: {
+        //                         labels: this.labels,
+        //                         datasets: [
+        //                             {
+        //                                 label: 'Systolic',
+        //                                 data: this.systolicData,
+        //                                 borderColor: 'red',
+        //                             },
+        //                             {
+        //                                 label: 'Diastolic',
+        //                                 data: this.diastolicData,
+        //                                 borderColor: 'blue',
+        //                             },
+        //                             {
+        //                                 label: 'Pulse',
+        //                                 data: this.pulseData,
+        //                                 borderColor: 'green',
+        //                             },
+        //                         ],
+        //                     },
+        //                 });
+        //             }
+        //         },
+        //     };
+        // } 
+
+    </script>
+</body>
+
+</html>

@@ -84,7 +84,7 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:3000/api/posts/
+GET http://localhost:3000/api/chatrooms/${chatroomId}/posts
 content-type: application/json
 
 ###
@@ -99,16 +99,16 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:3000/api/updatePost/
+POST http://localhost:3000/api/updatePost/${id}
 content-type: application/json
 
 {
-    "post_info": "Hi, I need advice, i am a 35 years old male",
+    "post_info": "Kuyashisa booo",
     "id": 6
 }
 
 ###
-POST  http://localhost:3000/api/deletePost/
+POST  http://localhost:3000/api/deletePost/:id
 content-type: application/json
 
 {
@@ -124,9 +124,9 @@ POST http://localhost:3000/api/addTracking
 content-type: application/json
 
 {
-  "user_id": 3,
-  "systolic_bp": 80,
-  "diastolic_bp": 50,
+  "user_id": 2,
+  "systolic": 80,
+  "diastolic": 50,
   "pulse": 69 
 }
 

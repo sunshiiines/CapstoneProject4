@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS tracking (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    systolic_bp INTEGER NOT NULL,
-    diastolic_bp INTEGER NOT NULL,
+    user_id INTEGER , -- User ID column
+    systolic INTEGER NOT NULL,
+    diastolic INTEGER NOT NULL,
     pulse INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-); 
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
-INSERT INTO tracking (user_id, systolic_bp, diastolic_bp, pulse)
+INSERT INTO tracking (user_id, systolic, diastolic, pulse)
 VALUES (2, 120, 80, 90);
 
 SELECT * from tracking;

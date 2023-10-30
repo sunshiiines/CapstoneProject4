@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatroom</title>
-    <link href="chat.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -15,11 +18,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Open Sans", sans-serif
+        }
+
         .chat {
             backdrop-filter: blur(10px);
             background-color: rgba(45, 253, 218, 0.402);
             width: min(600px, 90vw);
-            height: 500px;
+            height: auto;
             border: 1px solid #03a4ff;
             flex-direction: column;
             align-items: center;
@@ -99,118 +112,132 @@
 
     <div class="content chat">
         <h1 id="chatroom-name"></h1>
-        <div>
-            <h4>create post</h>
-                <input type="text" id="postInput" placeholder="Enter your post">
-                <button onclick="createPost()">Create Post</button>
+
+        <div class="w3-row-padding">
+            <div class="w3-col m12">
+                <div class="w3-card w3-round w3-white">
+                    <div class="w3-container w3-padding">
+                        <h5>create post</h5>
+                        <div>
+                            <textarea type="text" id="postInput" placeholder="Enter a post"></textarea><br><br>
+                            <button class="postButton" id="addPost">Post</button>
+                            <!-- <button id="updatePost">Update Post</button>
+                            <button id="deletePost">Delete Post</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <h2>Update/Delete Post</h2>
-            <input type="text" id="updateInput" placeholder="Enter updated post content">
-            <button onclick="updatePost()">Update Post</button>
-            <button onclick="deletePost()">Delete Post</button>
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <h4>Posts</h4><br>
+            <div class="post" id="postList"></div>
         </div>
 
-        <div id="postList"></div>
 
+        <script>
+            const chatroomId = new URLSearchParams(window.location.search).get('id');
+            const chatroomName = new URLSearchParams(window.location.search).get('name');
+            document.getElementById('chatroom-name').innerText = chatroomName || 'Chatroom';
 
+            const userId = sessionStorage.getItem("userId");
+            const username = sessionStorage.getItem('username');
 
-        <div id="messages"></div>
-        <textarea type="text" id="message-input" class="form-control" placeholder="Type your message"></textarea>
-        <button id="send-message" class="btn btn-primary mt-3">Send</button>
-    </div>
+            const createPostButton = document.getElementById('addPost');
+            const updatePostButton = document.getElementById('updatePost');
+            const deletePostButton = document.getElementById('deletePost');
+            const postInput = document.getElementById('postInput');
+            const postList = document.getElementById('postList');
 
+            const postDiv = document.createElement('div');
+             postDiv.className = 'post';            
 
-    <script>
-        const chatroomId = new URLSearchParams(window.location.search).get('id');
-        const chatroomName = new URLSearchParams(window.location.search).get('name');
-        document.getElementById('chatroom-name').innerText = chatroomName || 'Chatroom';
+            function getPosts() {
+                axios.get('http://localhost:3000/api/chatrooms/${chatroomId}/posts') // Replace with your actual endpoint
+                    .then(response => {
+                        if (response.status === 200) {
+                            const posts = response.data.posts; // Assuming your API returns an array of posts
 
-        const messagesDiv = document.getElementById('messages');
-        const messageInput = document.getElementById('message-input');
-        const sendMessageButton = document.getElementById('send-message');
+                            // Iterate through the posts and display them
+                            const postList = document.getElementById('postList'); // Assuming you have a div with this ID to display posts
 
-        const userId = sessionStorage.getItem("userId");
-        const username = sessionStorage.getItem('username');
+                            postList.innerHTML = ''; // Clear the previous posts
 
-        // Function to fetch and display posts
-        function getPosts() {
-            axios.get('http://localhost:3000/api/posts') // Replace with your actual endpoint
-                .then(response => {
-                    if (response.status === 200) {
-                        const posts = response.data.posts; // Assuming your API returns an array of posts
-
-                        // Iterate through the posts and display them
-                        const postList = document.getElementById('postList'); // Assuming you have a div with this ID to display posts
-
-                        postList.innerHTML = ''; // Clear the previous posts
-
-                        posts.forEach(post => {
-                            const postDiv = document.createElement('div');
-                            postDiv.textContent = post.post_info; // Assuming your post object has a "post_info" property
-                            postList.appendChild(postDiv);
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-
-        // Call the getPosts function to fetch and display posts
-        getPosts();
-
-
-        async function fetchMessages() {
-            try {
-                const response = await axios.get(`http://localhost:3000/api/chatrooms/${chatroomId}/getMessages`);
-
-                if (response.status === 200) { // Check the status code
-                    const data = response.data;
-                    messagesDiv.innerHTML = '';
-                    data.messages.forEach(message => {
-                        displayMessage(message);
+                            posts.forEach(post => {
+                                const postDiv = document.createElement('div');
+                                postDiv.textContent = post.post_info; // Assuming your post object has a "post_info" property
+                                postList.appendChild(postDiv);
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                     });
-                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                }
-            } catch (error) {
-                console.error('Error:', error);
             }
-        }
 
-        fetchMessages();
-        setInterval(fetchMessages, 5000); // Update messages every 5 seconds
+            // Call the getPosts function to fetch and display posts
+            getPosts();
 
-        sendMessageButton.addEventListener('click', async () => {
-            const post_info = messageInput.value;
+            createPostButton.addEventListener('click', () => {
+                const postInfo = postInput.value;
 
-            if (!post_info) return; // Validate the message content
-
-            try {
-                const response = await axios.post(`http://localhost:3000/api/addPost`, {
-                    post_info: post_info,
-                    sender_id: userId,
-                    chatroom_id: chatroomId,
-                    created_at: new Date().toISOString()
-                });
-
-                if (response.data.status === 'success') {
-                    // Message added successfully, you can handle it here
-                    messageInput.value = ''; // Clear the input field
+                if (postInfo) {
+                    // Send a request to create a new post
+                    axios.post('http://localhost:3000/api/addPost', {
+                        post_info: postInfo,
+                        sender_id: userId,
+                        chatroom_id: chatroomId,
+                        created_at: new Date().toISOString()
+                    })
+                        .then(response => {
+                            if (response.data.status === 'success') {
+                                // Post created successfully
+                                postInput.value = ''; 
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
                 }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
+            });
 
-        function displayMessage(message) {
-            const messageDiv = document.createElement('div');
-            messageDiv.textContent = `${message.sender_id}: ${message.post_info}`;
-            messagesDiv.appendChild(messageDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-    </script>
+            updatePostButton.addEventListener('click', () => {
+                const postInfo = postInput.value;
+                const postId = postId.value; // Replace with the actual post ID to update
+
+                if (postInfo) {
+                    // Send a request to update the specified post
+                    axios.put(`http://localhost:3000/api/posts/${id}`, {
+                        post_info: postInfo
+                    })
+                        .then(response => {
+                            if (response.data.status === 'success') {
+                                // Post updated successfully
+                                postInput.value = ''; // Clear the input field
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+            });
+
+            deletePostButton.addEventListener('click', () => {
+                const postId = `{id}`; // Replace with the actual post ID to delete
+
+                // Send a request to delete the specified post
+                axios.delete(`http://localhost:3000/api/posts/${id}`)
+                    .then(response => {
+                        if (response.data.status === 'success') {
+                            // Post deleted successfully
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+
+        </script>
 </body>
 
 </html>

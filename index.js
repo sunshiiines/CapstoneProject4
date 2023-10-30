@@ -2,6 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import cors from 'cors';
 import { getUsers, addUser, deleteUser, login, getChatrooms, addChatroom, updateChatroom, deleteChatroom, getChatroomMembers, addChatroomMember, deleteChatroomMember, getPosts, addPost, updatePost, deletePost, addTracking, updateTracking, deleteTracking, getTracking } from './db.js'
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -190,7 +191,7 @@ app.post('/api/deleteChatroomMember/', async (req, res) => {
 
 
 // Get posts
-app.get('/api/posts', async (req, res) => {
+app.get('/api/chatrooms/:chatroomId/posts', async (req, res) => {
   try {
     const posts = await getPosts();
     res.json({ posts });
@@ -216,8 +217,9 @@ app.post('/api/addPost', async (req, res) => {
 });
 
 //update a post
-app.post('/api/updatePost/', async (req, res) => {
-  const { post_info, id } = req.body;
+app.post('/api/updatePost/:id', async (req, res) => {
+  const { post_info } = req.body;
+  const id = req.params.id;
   
   try {
     await updatePost( post_info, id); 
@@ -232,8 +234,8 @@ app.post('/api/updatePost/', async (req, res) => {
 });
 
 // Delete a post
-app.post('/api/deletePost', async (req, res) => {
-  const {id} = req.body;
+app.post('/api/deletePost/:id', async (req, res) => {
+  const {id} = req.params.id;
   try {
       await deletePost(id);
       res.json({
@@ -259,9 +261,9 @@ app.get('/api/tracking', async (req, res) => {
 
 //add Tracking
 app.post('/api/addTracking', async (req, res) => {
-  const { user_id, systolic_bp, diastolic_bp, pulse } = req.body;
+  const { user_id, systolic, diastolic, pulse } = req.body;
   try {
-    await addTracking(user_id, systolic_bp, diastolic_bp, pulse);
+    await addTracking(user_id, systolic, diastolic, pulse);
     res.json({
       status: 'success',
       message: 'Tracking added successfully',
@@ -274,9 +276,9 @@ app.post('/api/addTracking', async (req, res) => {
 
 //update tracking
 app.post('/api/updateTracking/', async (req, res) => {
-  const { systolic_bp, diastolic_bp, pulse, id } = req.body;
+  const { systolic, diastolic, pulse, id } = req.body;
   try {
-    await updateTracking( systolic_bp, diastolic_bp, pulse, id); 
+    await updateTracking( systolic, diastolic, pulse, id); 
     res.json({
       status: 'success',
       message: `Tracking ${id} updated successfully`,

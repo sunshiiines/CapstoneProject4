@@ -1,6 +1,54 @@
 body {
     background-image: url("/images/background.jpeg");
     background-size: cover; }
+
+/* Style for chatroom divs */
+.chatroom {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* Style for chatroom names */
+.chatroom span {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+/* Style for delete buttons */
+.chatroom button {
+    background-color: #0d15b7;
+    color: white;
+}
+
+/* Style for the post container */
+#postList {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f5f5f5;
+}
+
+/* Style for the post title (assuming it's a heading) */
+.post h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+/* Style for the post content (assuming it's a paragraph) */
+.post p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Style for buttons */
+.postButton {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+}
+
     /*font-family: sans-serif;
     height: 100vh;
     display: block; 

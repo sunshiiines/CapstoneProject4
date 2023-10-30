@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Blog</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <script src="alpine.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         .blog {
             backdrop-filter: blur(10px); 
             background-color: rgba(45, 253, 218, 0.222); 
-            width: min(600px, 90vw);
             height: auto;
             border: 1px solid #03a4ff;
             flex-direction: column;
@@ -57,12 +59,6 @@
             margin: auto;
         }
 
-        #results {
-            backdrop-filter: blur(10px);
-            background-color: rgba(54, 54, 232, 0.333);
-            margin: auto;
-        }
-
         .content {
             margin-top: 100px;
         }
@@ -70,7 +66,7 @@
     </style>
 </head>
 
-<body>
+<body class="w3-light-grey content">
 
     <div class="container bg-light">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-5 border-bottom" id="myHeader">
@@ -105,7 +101,139 @@
         </header>
     </div>
 
-    <div class="container content blog">
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32 blog"> 
+  <h1><b>THE BLOG</b></h1>
+  <p>Welcome to our blog</p>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="https://th.bing.com/th/id/R.187aefc357a6ca970f0be65b705ce2c3?rik=hJl5Yfib0C%2b65A&pid=ImgRaw&r=0" alt="Hypertension" style="width:100%">
+    <div class="w3-container">
+      <h3><b>HYPERTENSION: THE SILENT KILLER</b></h3>
+      <h5>What is hypertension? Are you at risk? <span class="w3-opacity">October 7, 2023</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
+        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+  <img src="https://th.bing.com/th/id/OIP.6-_HjNHNyCXbuEOBlcMLFwHaEK?pid=ImgDet&rs=1" alt="Norway" style="width:100%">
+    <div class="w3-container">
+      <h3><b>HEALTH CHECK</b></h3>
+      <h5>Do you need a health vheck or just a sreening, <span class="w3-opacity">October 2, 2023</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
+        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="https://th.bing.com/th/id/R.f2f2c6865a38a4d6b5173d6fac51d782?rik=VyAasDfwFdfaDg&pid=ImgRaw&r=0" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>Hypertension Screening & Management Tool</b></h4>
+      <p>The best hypertension app you'll ever come across. The app helps you lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card w3-margin blog">
+    <div class="w3-container w3-padding">
+      <h4>Popular Posts</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li class="w3-padding-16">
+        <img src="https://th.bing.com/th/id/R.f3de67abbb3b1366c8634dd4379bf2cc?rik=0crwATXYut3RTA&riu=http%3a%2f%2fimages.huffingtonpost.com%2f2016-06-23-1466709798-3861111-FITNESSWOMAN.jpg&ehk=nzIMf%2fFgkP7VRg2k4MCfHRgqihQo8kW%2bO18X%2b%2biLoy0%3d&risl=&pid=ImgRaw&r=0" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">5 Ways to Maintain a Healthy Lifestyle</span><br>
+        <span>Sed mattis nunc</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="https://th.bing.com/th/id/OIP.A7mPrxYqQ6ucyhNMYs7QrAHaE_?pid=ImgDet&rs=1" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Why Regular Exercise is a Way of Life</span><br>
+        <span>Praes tinci sed</span>
+      </li> 
+      <li class="w3-padding-16">
+        <img src="https://th.bing.com/th/id/R.71b2469a114da4b0fd50600a1d705218?rik=%2bWgkXgz%2bMbQYuA&pid=ImgRaw&r=0" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">How Much Alcohol Must I Drink in One Day?</span><br>
+        <span>Ultricies congue</span>
+      </li>   
+      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="https://www.time4nutrition.co.uk/wp-content/uploads/2021/04/shutterstock_1668874993-2048x1352.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Body Mass Index</span><br>
+        <span>Lorem ipsum dipsum</span>
+      </li>  
+    </ul>
+  </div>
+  <hr> 
+ 
+  <!-- Labels / tags
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Tags</h4>
+    </div>
+    <div class="w3-container w3-white">
+    <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+    </p>
+    </div>
+  </div> -->
+  
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container blog w3-padding-32 w3-margin-top">
+  <!-- <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+  <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button> 
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
+</footer>
+
+    <!-- <div class="container content blog">
         <div class="article">
             <h2>5 Tips for a Healthy Lifestyle</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel dui vel justo pulvinar suscipit. Sed gravida elit vel diam sollicitudin, at suscipit purus congue. In euismod massa et turpis vehicula, id facilisis dolor sagittis. Sed tincidunt lectus ac odio iaculis bibendum... <a href="http://" target="_blank" rel="noopener noreferrer">read more</a></p>
@@ -114,6 +242,6 @@
             <h2>The Importance of Regular Exercise</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel dui vel justo pulvinar suscipit. Sed gravida elit vel diam sollicitudin, at suscipit purus congue. In euismod massa et turpis vehicula, id facilisis dolor sagittis. Sed tincidunt lectus ac odio iaculis bibendum... <a href="http://" target="_blank" rel="noopener noreferrer">read more</a></p>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>

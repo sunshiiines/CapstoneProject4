@@ -109,17 +109,17 @@ export async function getTracking() {
 const result9 = await getTracking()
 //console.log(result9)
 
-export async function addTracking(user_id, systolic_bp, diastolic_bp, pulse) {
-    const sql = 'insert into tracking (user_id, systolic_bp, diastolic_bp, pulse) values (?, ?, ?, ?);'
-    await db.run(sql, [user_id, systolic_bp, diastolic_bp, pulse]);
+export async function addTracking(user_id, systolic, diastolic, pulse) {
+    const sql = 'insert into tracking (user_id, systolic, diastolic, pulse) values (?, ?, ?, ?);'
+    await db.run(sql, [user_id, systolic, diastolic, pulse]);
 }
 export async function deleteTracking(id) {
     const sql = 'delete from tracking where id = ?';
     await db.run(sql, [id]);
 }
-export async function updateTracking(systolic_bp, diastolic_bp, pulse, id) {
-    const sql = 'update tracking set systolic_bp = ?, diastolic_bp =?, pulse = ? where id = ?';
-    await db.run(sql, [systolic_bp, diastolic_bp, pulse, id]);
+export async function updateTracking(systolic, diastolic, pulse, id) {
+    const sql = 'update tracking set systolic = ?, diastolic =?, pulse = ? where id = ?';
+    await db.run(sql, [systolic, diastolic, pulse, id]);
 }
 
 console.log('====================')
@@ -136,7 +136,7 @@ console.log('====================')
 //await updatePost('Hi,I am new here, whats up?', 3);
 //await deletePost(2);
 
-//await addTracking(1, 150, 90, 100);
+//await addTracking(2, 150, 90, 100);
 //await updateTracking(110, 80, 90, 3);
 //await deleteTracking(3);
 
