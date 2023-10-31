@@ -1,8 +1,17 @@
 import express from 'express';
 import cors from 'cors';
-import { getUsers, addUser, deleteUser, getChatrooms, addChatroom, updateChatroom, deleteChatroom, getChatroomMembers, addChatroomMember, deleteChatroomMember, getPosts, addPost, updatePost, deletePost, addTracking, updateTracking, deleteTracking, getTracking } from './db.js'
+import { open } from 'sqlite';
+import { getUsers, addUser, deleteUser, getChatrooms, addChatroom, updateChatroom, deleteChatroom, getChatroomMembers, addChatroomMember, deleteChatroomMember, getPosts, addPost, updatePost, deletePost, addTracking, updateTracking, deleteTracking, getTracking } from './db.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Create a SQLite database connection
+const database = await open({
+  filename: '101.db',
+  driver: sqlite3.Database,
+});
+
+database.migrate();
 
 app.use(cors());
 
@@ -125,7 +134,6 @@ app.post('/api/deleteChatroom', async (req, res) => {
       }
   });
 
-
   // Get chatroom members
 app.get('/api/chatroomMembers', async (req, res) => {
   try {
@@ -225,37 +233,34 @@ app.post('/api/deletePost', async (req, res) => {
       }
   });
 
-// Get tracking
+
+// Define a route to handle GET requests for tracking data
 app.get('/api/tracking', async (req, res) => {
   try {
-    const tracking = await getTracking();
-    res.json({ tracking });
+    const trackingData = await getTracking(database);
+    res.json(trackingData);
   } catch (error) {
-    console.error('Error retrieving tracking:', error);
+    console.error('Error fetching tracking data:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-//add Tracking
-app.post('/api/addTracking', async (req, res) => {
-  const { user_id, systolic_bp, diastolic_bp, pulse } = req.body;
+app.post('/api/tracking', async (req, res) => {
+  const { user_id, systolic, diastolic, pulse } = req.body;
   try {
-    await addTracking(user_id, systolic_bp, diastolic_bp, pulse);
-    res.json({
-      status: 'success',
-      message: 'Tracking added successfully',
-    });
+    await addTracking(user_id, systolic, diastolic, pulse); 
+    res.json({ success: true }); // Respond with a success message
   } catch (error) {
     console.error('Error adding tracking:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-//update tracking
-app.post('/api/updateTracking/', async (req, res) => {
-  const { systolic_bp, diastolic_bp, pulse, id } = req.body;
+// Define a route to handle POST requests to update tracking data
+app.post('/api/updateTracking', async (req, res) => {
+  const { systolic, diastolic, pulse, id } = req.body;
   try {
-    await updateTracking( systolic_bp, diastolic_bp, pulse, id); 
+    await updateTracking(database, id, systolic, diastolic, pulse);
     res.json({
       status: 'success',
       message: `Tracking ${id} updated successfully`,
@@ -266,11 +271,11 @@ app.post('/api/updateTracking/', async (req, res) => {
   }
 });
 
-// Delete tracking
-app.post('/api/deleteTracking/', async (req, res) => {
+// Define a route to handle POST requests to delete tracking data
+app.post('/api/deleteTracking', async (req, res) => {
   const { id } = req.body;
   try {
-    await deleteTracking(id);
+    await deleteTracking(database, id);
     res.json({
       status: 'success',
       message: 'Tracking deleted successfully',
@@ -281,6 +286,7 @@ app.post('/api/deleteTracking/', async (req, res) => {
   }
 });
 
+// Start the Express server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

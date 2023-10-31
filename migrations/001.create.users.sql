@@ -15,4 +15,4 @@ WHERE username = 'jane_tae';
                
 SELECT * FROM users;
 
-DROP TABLE users;
+-- DROP TABLE users;

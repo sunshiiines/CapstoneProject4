@@ -4,7 +4,7 @@ function profileData() {
 
             // Function to fetch user data
             fetchUserData() {
-                axios.get('/api/user-data') // Replace with your actual API endpoint
+                axios.get('/api/appointment') 
                     .then(response => {
                         this.user = response.data; // Set the user data from the response
                     })

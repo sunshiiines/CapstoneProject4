@@ -28,7 +28,6 @@ export async function deleteUser(id) {
     await db.run(sql, [id]);
 }
 
-
 // chatrooms
 
 export async function getChatrooms() {
@@ -93,46 +92,26 @@ export async function updatePost(post_info, id){
     await db.run(sql, [post_info, id]);
 }
 
-  
 //tracking
-
 export async function getTracking() {
-    const result9 = await db.all('select * from tracking')
-    return result9;
+    const result = await db.all('SELECT * FROM tracking');
+    return result;
 }
-const result9 = await getTracking()
-//console.log(result9)
 
-export async function addTracking(user_id, systolic_bp, diastolic_bp, pulse) {
-    const sql = 'insert into tracking (user_id, systolic_bp, diastolic_bp, pulse) values (?, ?, ?, ?);'
-    await db.run(sql, [user_id, systolic_bp, diastolic_bp, pulse]);
+export async function addTracking(user_id, systolic, diastolic, pulse) {
+    const sql = 'INSERT INTO tracking (user_id, systolic, diastolic, pulse) VALUES (?, ?, ?, ?)';
+    await db.run(sql, [user_id, systolic, diastolic, pulse]);
 }
+
 export async function deleteTracking(id) {
-    const sql = 'delete from tracking where id = ?';
+    const sql = 'DELETE FROM tracking WHERE id = ?';
     await db.run(sql, [id]);
 }
-export async function updateTracking(systolic_bp, diastolic_bp, pulse, id) {
-    const sql = 'update tracking set systolic_bp = ?, diastolic_bp =?, pulse = ? where id = ?';
-    await db.run(sql, [systolic_bp, diastolic_bp, pulse, id]);
+
+export async function updateTracking(systolic, diastolic, pulse, id) {
+    const sql = 'UPDATE tracking SET systolic = ?, diastolic = ?, pulse = ? WHERE id = ?';
+    await db.run(sql, [systolic, diastolic, pulse, id]);
 }
-
-console.log('====================')
-// await addUser('Mandy_Z', 'mandyZ@example.com', 'pasword2', 'offline');
-// await deleteUser('Mandy_Z');
-
-//await addChatroomMember(2, 2, '2023-09-28 14:35:00')
-
-//await addChatroom('Hypertension tracking', 5);
-//await updateChatroom('Hypertension patients', 4);
-//await deleteChatroom('Hypertension tracking');
-
-//await addPost('Hi i am new here', 5, 2, '2023-09-28 14:35:00');
-//await updatePost('Hi,I am new here, whats up?', 3);
-//await deletePost(2);
-
-//await addTracking(1, 150, 90, 100);
-//await updateTracking(110, 80, 90, 3);
-//await deleteTracking(3);
 
 const result2 = await getUsers()
 console.log(result2);

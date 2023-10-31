@@ -10,4 +10,4 @@ VALUES ('Easy effective exercises', 1);
  
 SELECT * from chatrooms;
 
-DROP TABLE chatrooms;
+-- DROP TABLE chatrooms;

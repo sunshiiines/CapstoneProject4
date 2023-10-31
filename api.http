@@ -113,8 +113,24 @@ content-type: application/json
     
 }
 
+# ###
+# GET http://localhost:3000/api/tracking/ 
+
 ###
-GET http://localhost:3000/api/tracking/ 
+GET http://localhost:3000/api/tracking
+
+###
+POST http://localhost:3000/api/tracking
+content-type: application/json
+
+{
+  "systolic": 120,
+  "diastolic": 80,
+  "pulse": 90,
+  "id": 1
+}
+
+
 
 ###
 POST http://localhost:3000/api/addTracking

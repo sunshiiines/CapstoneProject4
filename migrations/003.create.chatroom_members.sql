@@ -20,4 +20,4 @@ VALUES (2, 1, '2023-09-28 14:35:00');
 
 SELECT * FROM chatroom_members;
 
-DROP TABLE chatroom_members;
+-- DROP TABLE chatroom_members;
