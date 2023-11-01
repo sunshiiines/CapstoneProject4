@@ -18,6 +18,22 @@ app.use(session({
 }));
 
 
+//appointment
+app.get('/api/user-data', (req, res) => {
+  const userData = {
+      name: 'John Doe',
+      contacts: '123-456-7890',
+      email: 'john.doe@example.com',
+      appointments: {
+          doctor: 'Dr. Smith',
+          date: '2023-10-15',
+          time: '10:00 AM',
+      },
+  };
+
+  res.json(userData);
+});
+
 // Get users
 app.get('/api/users', async (req, res) => {
   try {

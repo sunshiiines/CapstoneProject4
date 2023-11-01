@@ -1,2 +1,4 @@
 101.db
 /node_modules
+.venv101.db
+/my_flask_app

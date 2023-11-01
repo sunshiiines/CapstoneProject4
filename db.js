@@ -130,11 +130,11 @@ console.log('====================')
 
 //await addChatroom('Hypertension tracking', 5);
 //await updateChatroom('Hypertension patients', 4);
-//await deleteChatroom('Hypertension tracking');
+//await deleteChatroom(13);
 
 //await addPost('Hi i am new here', 5, 2, '2023-09-28 14:35:00');
 //await updatePost('Hi,I am new here, whats up?', 3);
-//await deletePost(2);
+// await deletePost(10);
 
 //await addTracking(2, 150, 90, 100);
 //await updateTracking(110, 80, 90, 3);

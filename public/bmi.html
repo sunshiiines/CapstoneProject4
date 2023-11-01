@@ -142,44 +142,20 @@
                     // Convert height to meters (from centimeters)
                     const heightInMeters = height / 100;
 
-                    // Calculate BMI
-                    const bmi = weight / (heightInMeters * heightInMeters);
-
-                    resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
-                    resultElement.classList.remove('text-danger');
-                    resultElement.classList.add('text-success');
-                } else {
-                    resultElement.textContent = 'Please enter valid age, height, and weight.';
-                    resultElement.classList.remove('text-success');
-                    resultElement.classList.add('text-danger');
-                }
-            });
-        });
-
-        //     document.addEventListener('DOMContentLoaded', function () {
-        //         const calculateButton = document.getElementById('calculate-button');
-        //         const resultElement = document.getElementById('result');
-
-        //         calculateButton.addEventListener('click', function () {
-        //             const age = parseFloat(document.getElementById('Age').value);
-        //             const height = parseFloat(document.getElementById('Height').value);
-        //             const weight = parseFloat(document.getElementById('Weight').value);
-
-        //             if (!isNaN(age) && !isNaN(height) && !isNaN(weight) && height > 0) {
-        //                 // Calculate BMI here
-        //                 const heightInMeters = height * 0.3048; // Convert height from feet to meters
-        //                 const bmi = weight / (heightInMeters * heightInMeters);
-        //                 resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
-        //                 resultElement.classList.remove('text-danger');
-        //                 resultElement.classList.add('text-success');
-        //             } else {
-        //                 resultElement.textContent = 'Please enter valid age, height, and weight.';
-        //                 resultElement.classList.remove('text-success');
-        //                 resultElement.classList.add('text-danger');
-        //             }
-        //         });
-        //     });
-    </script>
+            // Calculate BMI
+            const bmi = weight / (heightInMeters * heightInMeters);
+            
+            resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+            resultElement.classList.remove('text-danger');
+            resultElement.classList.add('text-success');
+        } else {
+            resultElement.textContent = 'Please enter valid age, height, and weight.';
+            resultElement.classList.remove('text-success');
+            resultElement.classList.add('text-danger');
+        }
+    });
+});
+</script>
 
 </body>
 
