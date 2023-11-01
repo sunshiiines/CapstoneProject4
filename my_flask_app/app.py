@@ -28,22 +28,22 @@ def hypertension_classification(pre_output):
     else:
         return 'Unknown'
 
-input_data = {
-    "input_1": 0,
-    "input_2": 0,
-    "input_3": 0,
-    "input_4": 0,
-    "input_5": 0,
-    "input_6": 0,
-    "input_7": 0,
-    "input_8": 0,
-    "input_9": 0,
-    "input_10": 0,
-}
+# input_data = {
+#     "input_1": 0,
+#     "input_2": 0,
+#     "input_3": 0,
+#     "input_4": 0,
+#     "input_5": 0,
+#     "input_6": 0,
+#     "input_7": 0,
+#     "input_8": 0,
+#     "input_9": 0,
+#     "input_10": 0,
+# }
 
 @app.route('/api/inputs', methods=['GET'])
 def get_inputs():
-    return jsonify(input_data)  # Return sample input data as JSON
+    return jsonify(input_data)
 
 @app.route('/api/predict', methods=['POST'])
 def predict():
@@ -56,6 +56,7 @@ def predict():
 
     # Make predictions using the loaded model
     prediction = dst.predict([input_data])
+    print(prediction)
     pred_class = hypertension_classification(prediction[0])
 
     return jsonify({'prediction': pred_class})  # Return the prediction as JSON

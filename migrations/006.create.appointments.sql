@@ -11,4 +11,4 @@ VALUES (1, '0714567389', 'Doctor Three');
 
 SELECT * from appointments;
 
-DROP TABLE appointments;
+-- DROP TABLE appointments;

@@ -11,8 +11,8 @@ VALUES ('John Doe', 'johndoe@example.com', 'password567', 'offline');
 
 UPDATE users
 SET email = 'jane1@example.com'
-WHERE username = 'jane_tae';
+WHERE name = 'jane_tae';
                
 SELECT * FROM users;
 
-DROP TABLE users;
+-- DROP TABLE users;

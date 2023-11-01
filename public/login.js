@@ -3,7 +3,7 @@
             return {
                 email: '',
                 password: '',
-                rememberMe: false, // Add a checkbox for "Remember Me"
+                rememberMe: false, // Add a "Remember Me" checkbox
                 
                 // Initialize the email and password from local storage
                 init() {
@@ -12,7 +12,7 @@
                     if (storedEmail && storedPassword) {
                         this.email = storedEmail;
                         this.password = storedPassword;
-                        this.rememberMe = true; // Check the "Remember Me" checkbox
+                        this.rememberMe = true; 
                     }
                 },
 
@@ -32,11 +32,11 @@
                         password: this.password
                     })
                     .then(response => {
-                        // Handle the response, e.g., redirect to a new page
+                        // Handle the response
                         console.log('Login successful', response.data);
                     })
                     .catch(error => {
-                        // Handle login errors, e.g., display an error message
+                        
                         console.error('Login failed', error);
                     });
                 }

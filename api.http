@@ -91,6 +91,12 @@ content-type: application/json
 POST http://localhost:3000/api/addPost/
 content-type: application/json
 
+{
+    "post_info": "what's happening???",
+    "sender_id": 2,
+    "chatroom_id": 1,
+    "created_at": "2023-09-28 14:35:00"
+}
 
 ###
 POST http://localhost:3000/api/addPost/
@@ -121,8 +127,24 @@ content-type: application/json
     
 }
 
+# ###
+# GET http://localhost:3000/api/tracking/ 
+
 ###
-GET http://localhost:3000/api/tracking/ 
+GET http://localhost:3000/api/tracking
+
+###
+POST http://localhost:3000/api/tracking
+content-type: application/json
+
+{
+  "systolic": 120,
+  "diastolic": 80,
+  "pulse": 90,
+  "id": 1
+}
+
+
 
 ###
 POST http://localhost:3000/api/addTracking

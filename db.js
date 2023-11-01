@@ -76,7 +76,6 @@ export async function deleteChatroomMember(chatroom_id, user_id) {
     await db.run(sql, [chatroom_id, user_id]);
 }
 
-
 // posts
 
 export async function getPosts() {
@@ -99,12 +98,10 @@ export async function updatePost(post_info, id){
     await db.run(sql, [post_info, id]);
 }
 
-  
 //tracking
-
 export async function getTracking() {
-    const result9 = await db.all('select * from tracking')
-    return result9;
+    const result = await db.all('SELECT * FROM tracking');
+    return result;
 }
 const result9 = await getTracking()
 //console.log(result9)
@@ -113,8 +110,9 @@ export async function addTracking(user_id, systolic, diastolic, pulse) {
     const sql = 'insert into tracking (user_id, systolic, diastolic, pulse) values (?, ?, ?, ?);'
     await db.run(sql, [user_id, systolic, diastolic, pulse]);
 }
+
 export async function deleteTracking(id) {
-    const sql = 'delete from tracking where id = ?';
+    const sql = 'DELETE FROM tracking WHERE id = ?';
     await db.run(sql, [id]);
 }
 export async function updateTracking(systolic, diastolic, pulse, id) {

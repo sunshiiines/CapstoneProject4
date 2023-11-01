@@ -21,4 +21,4 @@ VALUES ('Hi I need help', 2, 1, '2023-09-28 14:35:00');
 
 SELECT * from posts; 
 
-DROP TABLE posts;
+-- DROP TABLE posts;

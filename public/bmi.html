@@ -71,23 +71,18 @@
 <body>
     <div class="container bg-light">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-5 border-bottom" id="myHeader">
-            <a href="index.html"
+            <a href="home.html"
                 class="d-flex align-items-center mb-5 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <i class="fa fa-home fa-2x"></i>
             </a>
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" href="bptracking.html">BP Tracking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bmi.html">Body Mass Index Calculator</a>
+                    <a class="nav-link" href="tracking.html">BP Tracking</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="community.html">Community Support</a>
                 </li>
-                <!-- <li class="nav-item">
-                            <a class="nav-link" href="/recommendations">Recommendations</a>
-                        </li> -->
+              
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -142,20 +137,25 @@
                     // Convert height to meters (from centimeters)
                     const heightInMeters = height / 100;
 
-            // Calculate BMI
-            const bmi = weight / (heightInMeters * heightInMeters);
-            
-            resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
-            resultElement.classList.remove('text-danger');
-            resultElement.classList.add('text-success');
-        } else {
-            resultElement.textContent = 'Please enter valid age, height, and weight.';
-            resultElement.classList.remove('text-success');
-            resultElement.classList.add('text-danger');
-        }
-    });
-});
-</script>
+                    // Calculate BMI
+                    const bmi = weight / (heightInMeters * heightInMeters);
+
+                    resultElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+                    resultElement.classList.remove('text-danger');
+                    resultElement.classList.add('text-success');
+                    
+                    const timeoutDuration = 5000; // 5 seconds in milliseconds
+                    setTimeout(() => {
+                        resultElement.textContent = ''; // Clear the message
+                    }, timeoutDuration);
+                } else {
+                    resultElement.textContent = 'Please enter valid age, height, and weight.';
+                    resultElement.classList.remove('text-success');
+                    resultElement.classList.add('text-danger');
+                }
+            });
+        });
+    </script>
 
 </body>
 

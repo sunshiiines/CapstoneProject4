@@ -163,7 +163,6 @@ app.post('/api/deleteChatroom', async (req, res) => {
       }
   });
 
-
   // Get chatroom members
 app.get('/api/chatroomMembers', async (req, res) => {
   try {
@@ -264,13 +263,14 @@ app.post('/api/deletePost/:id', async (req, res) => {
       }
   });
 
-// Get tracking
+
+// Define a route to handle GET requests for tracking data
 app.get('/api/tracking', async (req, res) => {
   try {
-    const tracking = await getTracking();
-    res.json({ tracking });
+    const trackingData = await getTracking(database);
+    res.json(trackingData);
   } catch (error) {
-    console.error('Error retrieving tracking:', error);
+    console.error('Error fetching tracking data:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -290,11 +290,11 @@ app.post('/api/addTracking', async (req, res) => {
   }
 });
 
-//update tracking
-app.post('/api/updateTracking/', async (req, res) => {
+// Define a route to handle POST requests to update tracking data
+app.post('/api/updateTracking', async (req, res) => {
   const { systolic, diastolic, pulse, id } = req.body;
   try {
-    await updateTracking( systolic, diastolic, pulse, id); 
+    await updateTracking(database, id, systolic, diastolic, pulse);
     res.json({
       status: 'success',
       message: `Tracking ${id} updated successfully`,
@@ -305,11 +305,11 @@ app.post('/api/updateTracking/', async (req, res) => {
   }
 });
 
-// Delete tracking
-app.post('/api/deleteTracking/', async (req, res) => {
+// Define a route to handle POST requests to delete tracking data
+app.post('/api/deleteTracking', async (req, res) => {
   const { id } = req.body;
   try {
-    await deleteTracking(id);
+    await deleteTracking(database, id);
     res.json({
       status: 'success',
       message: 'Tracking deleted successfully',
@@ -320,6 +320,7 @@ app.post('/api/deleteTracking/', async (req, res) => {
   }
 });
 
+// Start the Express server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

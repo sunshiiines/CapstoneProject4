@@ -65,7 +65,7 @@
             </a>
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" href="bptracking.html">BP Tracking</a>
+                    <a class="nav-link" href="tracking.html">BP Tracking</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="bmi.html">Body Mass Index</a>
@@ -84,7 +84,7 @@
                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                         <li><a class="dropdown-item mr-3" href="signup.html">Profile</a></li>
                         <li><a class="dropdown-item" href="blog.html">Blog</a></li>
-                        <li><a class="dropdown-item" href="languages.html">Languages</a></li>
+                        <!-- <li><a class="dropdown-item" href="languages.html">Languages</a></li> -->
                         <li><a class="dropdown-item" href="about.html">About</a></li>
                     </ul>
             </ul>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- User Information Form -->
-                        <form id="myForm" autocomplete="off" action="/signup" method="post">
+                        <form id="myForm" autocomplete="off" action="signup.html" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name:</label>
                                 <input type="text" id="name" name="name" class="form-control" required>
@@ -115,7 +115,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="contacts class=" form-label">Contact Information:</label>
+                                <label for="contacts" class="form-label">Contact Information:</label>
                                 <input type="text" id="contacts" name="contacts" class="form-control" required>
                             </div>
 
@@ -131,46 +131,14 @@
                             <div class="mt-5 bg-danger-subtle p-3 mb-5 " id="errorMessage" style="display: none;">
                                 <p class="text-danger" id="message"></p>
                             </div>
+                            <button type="submit" class="btn btn-primary">Edit</button>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
-
-                        <!-- Links to Educational Articles -->
-                        <h5 class="mt-4">Links to Educational Articles:</h5>
-                        <ul>
-                            <li><a href="#">Nutrition Articles</a></li>
-                            <li><a href="#">Educational Articles</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-        <!-- <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center mx-3">
-                <div class="navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/bp-tracking"><i class="fa fa-heartbeat fa-2x"></i>
-                            bp-tracking</bp-tracking></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/appointment"><i class="fa fa-medkit fa-2x"></i> Appointment</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/community-support"><i class="fa fa-comments-o fa-2x"></i> Community
-                                support</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/recommendations"><i class="fa fa-stethoscope fa-2x"></i>
-                                Recommendations</a>
-                        </li>
-                        <li class="nav-item"></li>
-                    </ul>
-                </div>
-            </nav>
-        </div> -->
 
     <script>
         const Form = document.getElementById("myForm")
@@ -219,15 +187,3 @@
 </body>
 
 </html>
-
-<!-- <body>
-
-    <!-- <div>
-        <h1>create profile</h1>
-
-        <input type="text" placeholder="full name">
-        <br>
-        <input type="text" placeholder="country">
-        <br>
-        <button type="submit" href="index.html">sign up</button>
-    </div> -->

@@ -12,17 +12,48 @@ document.addEventListener('alpine:init', () => {
             input_9: 0,
             input_10: 0
         },
+
+        patientMeasurements: {
+            height: 0,
+            weight: 0,
+        },
+
+        patientFeatures: {
+            age: 30,
+            sex: 0,
+            bmi: 0,
+            fhistory: 0,  // Family history
+            hpactivity: 0, // Habit activity
+            smoking: 0,
+            aconsumption: 0, // Alcohol consumption
+            salt: 0,
+            stressLevel: 0,
+            health: 0, // Chronic kidney diseas
+        },
         prediction: null,
 
         init() {
             console.log('init');
         },
 
+        calaculateBMI(height, weight) {
+            // Convert height to meters (from centimeters)
+            const heightInMeters = height / 100;
+
+            // Calculate BMI
+            const bmi = weight / (heightInMeters * heightInMeters);
+            return bmi.toFixed(2);
+
+        },
+
         predict() {
-            console.log('Sending request with input data:', this.inputData);
+            // Calculate the patients BMI
+            this.patientFeatures.bmi = this.calaculateBMI(this.patientMeasurements.height, this.patientMeasurements.weight);
+            console.log(this.patientFeatures);
             // Make a POST request to your Flask app
-            axios.post('http://127.0.0.1:5000/api/predict', this.inputData)
+            axios.post('http://127.0.0.1:5000/api/predict', this.patientFeatures)
                 .then(response => {
+                    console.log(response.data);
                     this.prediction = response.data.prediction;
                 })
                 .catch(error => {

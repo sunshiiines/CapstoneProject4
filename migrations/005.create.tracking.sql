@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS tracking (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER , -- User ID column
+    user_id INTEGER , 
     systolic INTEGER NOT NULL,
     diastolic INTEGER NOT NULL,
     pulse INTEGER NOT NULL,
@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS tracking (
 
 INSERT INTO tracking (user_id, systolic, diastolic, pulse)
 VALUES (2, 120, 80, 90);
+-- Insert initial data (optional)
+INSERT INTO tracking (user_id, systolic, diastolic, pulse)
+VALUES (1, 120, 80, 90); -- User 1's reading
 
-SELECT * from tracking;
-
-DROP TABLE tracking;
+-- Select all data from the tracking table
+SELECT * FROM tracking;
